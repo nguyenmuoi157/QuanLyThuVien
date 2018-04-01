@@ -4,9 +4,209 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="{DynamicResource MaterialDesignPaper}"
+     FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        DataContext="{StaticResource MainVM}"
+        Title="Quản Lý Thư Viện" Height="640" Width="1136">
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <materialDesign:ColorZone 
+            Grid.Row="0" 
+            Mode="PrimaryMid" 
+            Padding="16" Background="#FFFFD777"
+            >
+            <DockPanel>
+                <ToggleButton 
+                    Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"
+                    VerticalAlignment="Center"
+                    DockPanel.Dock="Right" />
+                <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True">
+                    <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+                    <materialDesign:ColorZone
+                        Mode="Standard"
+                        Padding="8 4 8 4"
+                        CornerRadius="2"
+                        Panel.ZIndex="1"
+                        Margin="16 0 0 0"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button
+                                Style="{DynamicResource MaterialDesignToolButton}">
+                                <materialDesign:PackIcon
+                                    Kind="Magnify"
+                                    Opacity=".56" />
+                            </Button>
+                            <TextBox
+                                Grid.Column="1"
+                                Margin="8 0 0 0"
+                                materialDesign:HintAssist.Hint="Build a search bar"
+                                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                BorderThickness="0"
+                                MinWidth="200"
+                                VerticalAlignment="Center" />
+                            <Button
+                                Style="{DynamicResource MaterialDesignToolButton}"
+                                Grid.Column="2">
+                                <materialDesign:PackIcon
+                                    Kind="Microphone"
+                                    Opacity=".56"
+                                    Margin="8 0 0 0" />
+                            </Button>
+                        </Grid>
+                    </materialDesign:ColorZone>
+                    <Button  
+                        Style="{DynamicResource MaterialDesignToolForegroundButton}"
+                        Margin="8 0 0 0"
+                        Panel.ZIndex="0">
+                        <materialDesign:PackIcon Kind="Send" />
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+        </materialDesign:ColorZone>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--menku bên trái-->
+            <Grid Grid.Column="0" Background="#FF424A5D">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--phần avatar-->
+                <Image Width="200" Height="150" Grid.Row="0"></Image>
+                <!--phần menu-->
+                <StackPanel Grid.Row="1" x:Name="panelleft" Width="200">
+                    <StackPanel.Resources>
+                        <!--style cho button-->
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF424A5D"></Setter>
+                            <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
+                            <Setter Property="Height" Value="40"></Setter>
+                            <Setter Property="Foreground" Value="#FF85878D"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                            <Setter Property="Padding" Value="30 0 0 0"></Setter>
+                            <Setter Property="BorderBrush" Value="#FF424A5D"></Setter>
+                            <Setter Property="Width" Value="200"></Setter>
+                            <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+                            
+                        </Style>
+                        <!--style cho icon-->
+                        <Style TargetType="materialDesign:PackIcon">
+                            <Setter Property="Margin" Value="30 0 5 0"></Setter>
+                            <Setter Property="Width" Value="25"></Setter>
+                            <Setter Property="Height" Value="25"></Setter>
+                        </Style>
+
+                        <!--style cho texblock-->
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontSize" Value="15"></Setter>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button>
+                        <DockPanel Width="{Binding Path=Width, ElementName=panelleft}">
+                            <materialDesign:PackIcon Kind="Puzzle"/>
+                            <TextBlock Text=" DaTaBroad"></TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button>
+                        <DockPanel Width="{Binding Path=Width, ElementName=panelleft}">
+                            <materialDesign:PackIcon Kind="MaterialUi"/>
+                            <TextBlock Text=" UI Element"></TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button>
+                        <DockPanel Width="{Binding Path=Width, ElementName=panelleft}">
+                            <materialDesign:PackIcon Kind="LockerMultiple"/>
+                            <TextBlock Text=" Compoment"></TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button >
+                        <DockPanel Width="{Binding Path=Width, ElementName=panelleft}">
+                            <materialDesign:PackIcon Kind="GooglePages"/>
+                            <TextBlock Text=" Exstra Page"></TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button>
+                        <DockPanel  HorizontalAlignment="Left" Width="{Binding Path=Width, ElementName=panelleft}">
+                            <materialDesign:PackIcon Kind="FormatPageBreak"/>
+                            <TextBlock Text=" Form"/>
+                        </DockPanel>
+                    </Button>
+                    <Button>
+                        <DockPanel  Width="{Binding Path=Width, ElementName=panelleft}">
+                            <materialDesign:PackIcon Kind="TableLarge"/>
+                            <TextBlock Text=" Data Table"></TextBlock>
+                        </DockPanel>
+                    </Button>
+                    <Button>
+                        <DockPanel  Width="{Binding Path=Width, ElementName=panelleft}">
+                            <materialDesign:PackIcon Kind="ChartPie"/>
+                            <TextBlock Text=" Charts"></TextBlock>
+                        </DockPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <!--menu bên phải-->
+            <materialDesign:Card Grid.Column="2">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <!--tiêu đề-->
+                    <TextBlock Text="Thông Báo" 
+                               Grid.Row="0" 
+                               Width="200" 
+                               TextAlignment="Center" 
+                               Height="50" Padding="0 15" 
+                               Margin="10" 
+                               Background="#FFFF865C"
+                               FontFamily="Century Gothic">
+
+                    </TextBlock>
+                    <!--các thông báo-->
+                    <StackPanel Grid.Row="1">
+
+                        <StackPanel>
+                            <TextBlock
+                            TextWrapping="Wrap"
+                            Text="thông báo mmammmmđmdmdmdmdmdmdmssm đkjdkjdksjdk dđ"
+                            Width="200">
+                            </TextBlock>
+                            <Border
+                            Background="{DynamicResource MaterialDesignDivider}"
+                            Height="1"
+                            HorizontalAlignment="Stretch"
+                            SnapsToDevicePixels="True" />
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+            </materialDesign:Card>
+        </Grid>
+
     </Grid>
+    
+    
 </Window>
