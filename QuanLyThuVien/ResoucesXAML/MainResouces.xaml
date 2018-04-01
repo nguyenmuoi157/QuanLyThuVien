@@ -3,7 +3,5 @@
                     
                     xmlns:viewmodel ="clr-namespace:QuanLyThuVien.ViewModel">
 
-    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:MainViewModel x:Key="MainViewModel"></viewmodel:MainViewModel>
 </ResourceDictionary>
-
-<!--xmlns:local="clr-namespace:QuanLyThuVien.ResoucesXAML"-->

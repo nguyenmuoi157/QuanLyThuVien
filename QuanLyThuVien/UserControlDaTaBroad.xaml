@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuanLyThuVien"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -24,35 +23,41 @@
             <Grid.Resources>
                 <Style TargetType="TextBlock">
                     <Setter Property="Margin" Value="0 20"/>
-                    <Setter Property="Foreground" Value="#FF85878D"></Setter>
-                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                    <Setter Property="Foreground" Value="#FFBEBEBF"></Setter>
+                    <Setter Property="Background" Value="#FFF2F2F2"></Setter>
+                    <!--<Setter Property="FontWeight" Value="Bold"></Setter>-->
                     <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+                    <Setter Property="FontSize" Value="20"></Setter>
+                    
                 </Style>
                 <Style TargetType="materialDesign:PackIcon">
-                    <Setter Property="Foreground" Value="#FF85878D"></Setter>
+                    <Setter Property="Foreground" Value="#FFBEBEBF"></Setter>
+                    <Setter Property="Width" Value="100"></Setter>
+                    <Setter Property="Height" Value="100"></Setter>
                 </Style>
             </Grid.Resources>
 
-            <Grid Grid.Column="0">
-                <TextBlock VerticalAlignment="Top" Text="trái tim" TextAlignment="Center" Background="#FFF2F2F2"></TextBlock>
-                <materialDesign:PackIcon Kind="HeartOutline" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50"/>
+            <StackPanel Grid.Column="0">
+
+                <TextBlock Text="Trái tim" TextAlignment="Center"></TextBlock>
+                <materialDesign:PackIcon Kind="HeartOutline" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                 <TextBlock Text="+99" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 20"></TextBlock>
-            </Grid>
-            <Grid Grid.Column="1">
-                <TextBlock VerticalAlignment="Top" Text="Cloud" TextAlignment="Center" Background="#FFF2F2F2"></TextBlock>
-                <materialDesign:PackIcon Kind="CloudOutline" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock VerticalAlignment="Top" Text="Cloud" TextAlignment="Center"></TextBlock>
+                <materialDesign:PackIcon Kind="CloudOutline" VerticalAlignment="Center" HorizontalAlignment="Center" />
                 <TextBlock Text="+99" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 20"></TextBlock>
-            </Grid>
-            <Grid Grid.Column="2">
-                <TextBlock VerticalAlignment="Top" Text="Hard disk" TextAlignment="Center" Background="#FFF2F2F2"></TextBlock>
-                <materialDesign:PackIcon Kind="Harddisk" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock VerticalAlignment="Top" Text="Hard disk" TextAlignment="Center"></TextBlock>
+                <materialDesign:PackIcon Kind="Harddisk" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock Text="+99" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 20"></TextBlock>
-            </Grid>
-            <Grid Grid.Column="3">
-                <TextBlock VerticalAlignment="Top" Text="Data Base" TextAlignment="Center" Background="#FFF2F2F2"></TextBlock>
-                <materialDesign:PackIcon Kind="Database" VerticalAlignment="Center" HorizontalAlignment="Center" Width="50" Height="50"/>
+            </StackPanel>
+            <StackPanel Grid.Column="3">
+                <TextBlock VerticalAlignment="Top" Text="Data Base" TextAlignment="Center"></TextBlock>
+                <materialDesign:PackIcon Kind="Database" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 <TextBlock Text="+99" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 20"></TextBlock>
-            </Grid>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

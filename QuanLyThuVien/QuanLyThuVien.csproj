@@ -66,8 +66,12 @@
     <Compile Include="UserControlDaTaBroad.xaml.cs">
       <DependentUpon>UserControlDaTaBroad.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControlXAML\UserControl_ControlBar.xaml.cs">
+      <DependentUpon>UserControl_ControlBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
     <Page Include="LoginWindows.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControlDaTaBroad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlXAML\UserControl_ControlBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

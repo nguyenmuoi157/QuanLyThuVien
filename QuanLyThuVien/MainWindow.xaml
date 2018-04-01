@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyThuVien"
+        xmlns:uc="clr-namespace:QuanLyThuVien.UserControlXAML"
+       
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
@@ -13,73 +15,23 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
-        DataContext="{StaticResource MainVM}"
-        Title="Quản Lý Thư Viện" Height="640" Width="1136">
+        DataContext="{StaticResource MainViewModel}"
+        Title="Quản Lý Thư Viện" Height="640" Width="1136" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-
-        <materialDesign:ColorZone 
-            Grid.Row="0" 
-            Mode="PrimaryMid" 
-            Padding="16" Background="#FFFFD777"
-            >
-            <DockPanel>
-                <ToggleButton 
-                    Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"
-                    VerticalAlignment="Center"
-                    DockPanel.Dock="Right" />
-                <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True">
-                    <ToggleButton Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
-                    <materialDesign:ColorZone
-                        Mode="Standard"
-                        Padding="8 4 8 4"
-                        CornerRadius="2"
-                        Panel.ZIndex="1"
-                        Margin="16 0 0 0"
-                        materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Button
-                                Style="{DynamicResource MaterialDesignToolButton}">
-                                <materialDesign:PackIcon
-                                    Kind="Magnify"
-                                    Opacity=".56" />
-                            </Button>
-                            <TextBox
-                                Grid.Column="1"
-                                Margin="8 0 0 0"
-                                materialDesign:HintAssist.Hint="Build a search bar"
-                                materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                BorderThickness="0"
-                                MinWidth="200"
-                                VerticalAlignment="Center" />
-                            <Button
-                                Style="{DynamicResource MaterialDesignToolButton}"
-                                Grid.Column="2">
-                                <materialDesign:PackIcon
-                                    Kind="Microphone"
-                                    Opacity=".56"
-                                    Margin="8 0 0 0" />
-                            </Button>
-                        </Grid>
-                    </materialDesign:ColorZone>
-                    <Button  
-                        Style="{DynamicResource MaterialDesignToolForegroundButton}"
-                        Margin="8 0 0 0"
-                        Panel.ZIndex="0">
-                        <materialDesign:PackIcon Kind="Send" />
-                    </Button>
-                </StackPanel>
-            </DockPanel>
-        </materialDesign:ColorZone>
+        <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="653*"/>
+                <ColumnDefinition Width="475*"/>
+            </Grid.ColumnDefinitions>
+        <!--Thanh controlbar-->
+        <uc:UserControl_ControlBar Grid.ColumnSpan="2"></uc:UserControl_ControlBar>
+        </Grid>
+  
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"></ColumnDefinition>
@@ -108,7 +60,7 @@
                             <Setter Property="BorderBrush" Value="#FF424A5D"></Setter>
                             <Setter Property="Width" Value="200"></Setter>
                             <Setter Property="FontFamily" Value="Century Gothic"></Setter>
-                            
+
                         </Style>
                         <!--style cho icon-->
                         <Style TargetType="materialDesign:PackIcon">
@@ -207,6 +159,6 @@
         </Grid>
 
     </Grid>
-    
-    
+
+
 </Window>

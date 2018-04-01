@@ -22,6 +22,7 @@ namespace QuanLyThuVien
         public MainWindows()
         {
             InitializeComponent();
+            MainContent.Children.Add(new UserControlDaTaBroad());
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

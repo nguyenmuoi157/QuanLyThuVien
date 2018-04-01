@@ -10,28 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuanLyThuVien
+namespace QuanLyThuVien.UserControlXAML
 {
     /// <summary>
-    /// Interaction logic for LoginWindows.xaml
+    /// Interaction logic for UserControl_ControlBar.xaml
     /// </summary>
-    public partial class LoginWindows : Window
+    public partial class UserControl_ControlBar : UserControl
     {
-        public LoginWindows()
+        public UserControl_ControlBar()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            DragMove();
+            Application.Current.Shutdown();
         }
     }
 }
