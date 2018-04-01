@@ -15,8 +15,13 @@
             </Grid.ColumnDefinitions>
             <!--phần nội dung chính-->
             <Grid Grid.Column="1">
-                <StackPanel>
-                    <Grid Height="30" VerticalAlignment="Top" Background="#FFFFD777" MouseDown="StackPanel_MouseDown">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!--menu bar-->
+                    <Grid Grid.Row="0" Height="30" Background="#FFFFD777" MouseDown="StackPanel_MouseDown">
                         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right">
                             <Button x:Name="btnAccount" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
                                 <materialDesign:PackIcon Kind="Account" ></materialDesign:PackIcon>
@@ -39,11 +44,14 @@
                             </Button>
                         </StackPanel>
                     </Grid>
-
-                    <Grid x:Name="MainContent">
-                        
-                    </Grid>
-                </StackPanel>
+                    <!--nội dung chính-->
+                    <ScrollViewer Grid.Row="1">
+                        <Grid x:Name="MainContent">
+                             
+                        </Grid>
+                    </ScrollViewer>
+                   
+                </Grid>
 
 
             </Grid>
@@ -60,9 +68,10 @@
                     <Grid x:Name="GridSlider" Height="60" Width="5" HorizontalAlignment="Left" Background="#FF68DFF0" VerticalAlignment="Top" Margin="0 150 0 0"/>
                 </materialDesign:TransitioningContent>
                 <Grid VerticalAlignment="Top" Height="150">
+                   
                     <Ellipse Width="70" Height="70" VerticalAlignment="Top" Margin="0 20">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="Resouces/Contact.png"/>
+                            <ImageBrush ImageSource="{Binding}"/>
                         </Ellipse.Fill>
 
                     </Ellipse>
