@@ -4,18 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QuanLyThuVien.UserControlXAML"
-               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             Name="UcControlBar"
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+           
              >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown">
+            <i:InvokeCommandAction Command="{Binding MoveWindowCommand}" CommandParameter="{Binding ElementName=UcControlBar}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid Grid.Row="0" Height="30" Background="#FFFFD777">
         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right">
-            <Button x:Name="btnAccount" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
-                <materialDesign:PackIcon Kind="Account" ></materialDesign:PackIcon>
+            <Button Command="{Binding MinimineWindowCommand}" CommandParameter="{Binding ElementName=UcControlBar}" x:Name="btnAccount" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
+                <materialDesign:PackIcon Kind="WindowMinimize" ></materialDesign:PackIcon>
             </Button>
-            <Button x:Name="btnSetTing" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
-                <materialDesign:PackIcon Kind="Settings" ></materialDesign:PackIcon>
+            <Button Command="{Binding MaximineWindowCommand}" CommandParameter="{Binding ElementName=UcControlBar}" x:Name="btnSetTing" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
+                <materialDesign:PackIcon Kind="WindowMaximize" ></materialDesign:PackIcon>
             </Button>
-            <Button x:Name="btnExit" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="OrangeRed" Click="btnExit_Click">
+            <Button Command="{Binding CloseWindowCommand}" CommandParameter="{Binding ElementName=UcControlBar}" x:Name="btnExit" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="OrangeRed">
                 <materialDesign:PackIcon Kind="Power" ></materialDesign:PackIcon>
             </Button>
         </StackPanel>
@@ -23,10 +31,10 @@
 
         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
             <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
-                <materialDesign:PackIcon Kind="Message" ></materialDesign:PackIcon>
+                <materialDesign:PackIcon Kind="GithubCircle" ></materialDesign:PackIcon>
             </Button>
             <Button  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
-                <materialDesign:PackIcon Kind="Hamburger"   ></materialDesign:PackIcon>
+                <materialDesign:PackIcon Kind="FacebookBox"   ></materialDesign:PackIcon>
             </Button>
         </StackPanel>
     </Grid>

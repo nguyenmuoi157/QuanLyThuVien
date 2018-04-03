@@ -12,23 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using QuanLyThuVien.ViewModel;
 namespace QuanLyThuVien.UserControlXAML
 {
-    /// <summary>
-    /// Interaction logic for UserControl_ControlBar.xaml
-    /// </summary>
+ 
+
+
+
     public partial class UserControl_ControlBar : UserControl
     {
+        public ControlBarViewModel ViewModel { get; set; }
         public UserControl_ControlBar()
         {
             InitializeComponent();
+            ViewModel = new ControlBarViewModel();
+            this.DataContext = ViewModel;
         }
 
 
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
     }
 }

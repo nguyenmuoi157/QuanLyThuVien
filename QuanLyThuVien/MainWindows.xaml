@@ -4,9 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:QuanLyThuVien"
         mc:Ignorable="d"
+        xmlns:uc ="clr-namespace:QuanLyThuVien.UserControlXAML"
+        DataContext="{StaticResource MainViewModel}"
         Title="Quản Lý Thư Viện " Height="768" Width="1136" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding WindowsLoadCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -21,29 +29,10 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <!--menu bar-->
-                    <Grid Grid.Row="0" Height="30" Background="#FFFFD777" MouseDown="StackPanel_MouseDown">
-                        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right">
-                            <Button x:Name="btnAccount" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
-                                <materialDesign:PackIcon Kind="Account" ></materialDesign:PackIcon>
-                            </Button>
-                            <Button x:Name="btnSetTing" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
-                                <materialDesign:PackIcon Kind="Settings" ></materialDesign:PackIcon>
-                            </Button>
-                            <Button x:Name="btnExit" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="OrangeRed" Click="btnExit_Click">
-                                <materialDesign:PackIcon Kind="Power" ></materialDesign:PackIcon>
-                            </Button>
-                        </StackPanel>
-
-
-                        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
-                            <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
-                                <materialDesign:PackIcon Kind="Message" ></materialDesign:PackIcon>
-                            </Button>
-                            <Button  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
-                                <materialDesign:PackIcon Kind="Hamburger"   ></materialDesign:PackIcon>
-                            </Button>
-                        </StackPanel>
+                    <Grid Grid.Row="0">
+                        <uc:UserControl_ControlBar></uc:UserControl_ControlBar>
                     </Grid>
+ 
                     <!--nội dung chính-->
                     <ScrollViewer Grid.Row="1">
                         <Grid x:Name="MainContent">

@@ -31,7 +31,7 @@ namespace QuanLyThuVien
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            //DragMove();
         }
     }
 }
