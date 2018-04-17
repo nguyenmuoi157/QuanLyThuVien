@@ -15,13 +15,18 @@ using System.Windows.Shapes;
 namespace QuanLyThuVien
 {
     /// <summary>
-    /// Interaction logic for LoginWindows.xaml
+    /// Interaction logic for ThemBanDocWindows.xaml
     /// </summary>
-    public partial class LoginWindows : Window
+    public partial class ThemBanDocWindows : Window
     {
-        public LoginWindows()
+        public ThemBanDocWindows()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

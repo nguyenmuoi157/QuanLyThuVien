@@ -9,10 +9,11 @@
         mc:Ignorable="d"
         xmlns:uc ="clr-namespace:QuanLyThuVien.UserControlXAML"
         DataContext="{StaticResource MainViewModel}"
+        Name="MainWindow"
         Title="Quản Lý Thư Viện " Height="768" Width="1136" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding WindowsLoadCommand}"/>
+            <i:InvokeCommandAction Command="{Binding WindowsLoadCommand}" CommandParameter="{Binding  ElementName=MainWindow}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
@@ -23,7 +24,7 @@
             </Grid.ColumnDefinitions>
             <!--phần nội dung chính-->
             <Grid Grid.Column="1">
-                <Grid>
+                <Grid Background="WhiteSmoke">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
                         <RowDefinition Height="*"/>
@@ -32,12 +33,64 @@
                     <Grid Grid.Row="0">
                         <uc:UserControl_ControlBar></uc:UserControl_ControlBar>
                     </Grid>
- 
+                    <Grid Height="150" VerticalAlignment="Top" Grid.Row="1"  Background="#FF2094C8">
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 100 50">
+                                <materialDesign:ColorZone
+                                    Mode="Standard"
+                                    Padding="8 4 8 4"
+                                    CornerRadius="2"
+                                    Margin="16 0 0 0"
+                                            materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition
+                                                        Width="Auto" />
+                                                    <ColumnDefinition
+                                                        Width="*" />
+                                                    <ColumnDefinition
+                                                        Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Button
+                                                    Style="{DynamicResource MaterialDesignToolButton}">
+                                                    <materialDesign:PackIcon
+                                                        Kind="Magnify"
+                                                        Opacity=".56" />
+                                                </Button>
+                                                <TextBox
+                                                    Grid.Column="1"
+                                                    Margin="8 0 0 0"
+                                                    materialDesign:HintAssist.Hint="Từ Khoá Tìm Kiếm"
+                                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                                    BorderThickness="0"
+                                                    MinWidth="200"
+                                                    VerticalAlignment="Center" />
+                                                <Button
+                                                    Style="{DynamicResource MaterialDesignToolButton}"
+                                                    Grid.Column="2">
+                                                    
+                                                </Button>
+                                            </Grid>
+                                        </materialDesign:ColorZone>
+                                <Button
+                                    Style="{DynamicResource MaterialDesignToolForegroundButton}" Foreground="White">
+                                    <materialDesign:PackIcon Kind="Send" />
+                                </Button>
+                            </StackPanel>
+                        
+                        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                            
+                        </StackPanel>
+                    </Grid>
                     <!--nội dung chính-->
-                    <ScrollViewer Grid.Row="1">
-                        <Grid x:Name="MainContent">
-                             
-                        </Grid>
+                    <ScrollViewer VerticalAlignment="Top" Margin="10 100 10 0" Grid.Row="1">
+                        <Frame x:Name="MainContent" NavigationUIVisibility="Hidden">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="Loaded">
+                                    <i:InvokeCommandAction Command="{Binding FrameLoadCommand}" CommandParameter="{Binding  ElementName=MainContent}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Frame>
                     </ScrollViewer>
                    
                 </Grid>
@@ -45,66 +98,94 @@
 
             </Grid>
             <!--menu bên trái-->
-            <Grid Grid.Column="0" Background="#FF424A5D">
-                <Grid.Resources>
-                    <Style TargetType="materialDesign:PackIcon">
-                        <Setter Property="Margin" Value="20 0"/>
-                        <Setter Property="Width" Value="25"/>
-                        <Setter Property="Height" Value="25"/>
-                    </Style>
-                </Grid.Resources>
-                <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.2}">
-                    <Grid x:Name="GridSlider" Height="60" Width="5" HorizontalAlignment="Left" Background="#FF68DFF0" VerticalAlignment="Top" Margin="0 150 0 0"/>
-                </materialDesign:TransitioningContent>
-                <Grid VerticalAlignment="Top" Height="150">
-                   
-                    <Ellipse Width="70" Height="70" VerticalAlignment="Top" Margin="0 20">
-                        <Ellipse.Fill>
-                            <ImageBrush ImageSource="{Binding}"/>
-                        </Ellipse.Fill>
+       
+                <Grid Grid.Column="0" Background="#FF424A5D" >
+                    <Grid.Resources>
+                        <Style TargetType="materialDesign:PackIcon">
+                            <Setter Property="Margin" Value="20 0"/>
+                            <Setter Property="Width" Value="25"/>
+                            <Setter Property="Height" Value="25"/>
+                        </Style>
+                    </Grid.Resources>
+                    <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.2}">
+                        <Grid x:Name="GridSlider" Height="60" Width="5" HorizontalAlignment="Left" Background="#FF68DFF0" VerticalAlignment="Top" Margin="0 150 0 0"/>
+                    </materialDesign:TransitioningContent>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
 
-                    </Ellipse>
-                    <TextBlock Text="Tên Người Dùng" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="AntiqueWhite" Margin="0 20  "></TextBlock>
+                            <Ellipse Width="70" Height="70" VerticalAlignment="Top" Margin="0 20">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding}"/>
+                                </Ellipse.Fill>
+
+                            </Ellipse>
+                            <TextBlock Text="Tên Người Dùng" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="AntiqueWhite" Margin="0 20  "></TextBlock>
+                        </Grid>
+ 
+                        <StackPanel Grid.Row="1">
+
+                            <ListView  x:Name="ListViewMenu" Margin="0 0" Foreground="#FF85878D" FontFamily="Century Gothic" FontSize="14" SelectionChanged="ListViewMenu_SelectionChanged">
+                                <ListViewItem  Height="60">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon  Kind="Home" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Trang Chủ" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Height="60">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Notebook" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Tài Liệu" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Height="60">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon  Kind="AccountMultipleOutline" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Bạn Đọc" VerticalAlignment="Center"  />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Height="60">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon  Kind="TruckDelivery" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Mượn Tài Liệu" VerticalAlignment="Center"  />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Height="60">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon  Kind="Cash" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Trả Tài Liệu" VerticalAlignment="Center"  />
+                                    </StackPanel>
+                                </ListViewItem>
+                                <ListViewItem Height="60">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon  Kind="ClipboardAccount" VerticalAlignment="Center"/>
+                                        <TextBlock Text="Người dùng" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                </ListViewItem>
+
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding SelectItemCommand}" CommandParameter="{Binding ElementName=ListViewMenu}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+
+                            </ListView>
+                        </StackPanel>
+                 
+                        
+
+
+                    </Grid>
+
+
+
+
                 </Grid>
-                <ListView x:Name="ListViewMenu" Margin="0 150" Foreground="#FF85878D" FontFamily="Century Gothic" FontSize="14" SelectionChanged="ListViewMenu_SelectionChanged">
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon  Kind="Home" VerticalAlignment="Center"/>
-                            <TextBlock Text="Trang Chủ" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Notebook" VerticalAlignment="Center"/>
-                            <TextBlock Text="Tài Liệu" VerticalAlignment="Center" />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon  Kind="AccountMultipleOutline" VerticalAlignment="Center"/>
-                            <TextBlock Text="Bạn Đọc" VerticalAlignment="Center"  />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon  Kind="TruckDelivery" VerticalAlignment="Center"/>
-                            <TextBlock Text="Mượn Tài Liệu" VerticalAlignment="Center"  />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon  Kind="Cash" VerticalAlignment="Center"/>
-                            <TextBlock Text="Trả Tài Liệu" VerticalAlignment="Center"  />
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon  Kind="ClipboardAccount" VerticalAlignment="Center"/>
-                            <TextBlock Text="Người dùng" VerticalAlignment="Center" />
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>
-            </Grid>
+       
+            
         </Grid>
     </Grid>
 </Window>

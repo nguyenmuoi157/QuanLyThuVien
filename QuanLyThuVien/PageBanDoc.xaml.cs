@@ -10,18 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QuanLyThuVien
 {
     /// <summary>
-    /// Interaction logic for LoginWindows.xaml
+    /// Interaction logic for PageBanDoc.xaml
     /// </summary>
-    public partial class LoginWindows : Window
+    public partial class PageBanDoc : Page
     {
-        public LoginWindows()
+        public PageBanDoc()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //ThemBanDocWindows them = new ThemBanDocWindows();
+            //them.ShowDialog();
         }
     }
 }

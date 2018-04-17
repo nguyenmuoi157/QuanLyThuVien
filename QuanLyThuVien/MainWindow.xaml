@@ -39,85 +39,20 @@
                 <ColumnDefinition Width="auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!--menku bên trái-->
-            <Grid Grid.Column="0" Background="#FF424A5D">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <!--phần avatar-->
-                <Image Width="200" Height="150" Grid.Row="0"></Image>
-                <!--phần menu-->
-                <StackPanel Grid.Row="1" x:Name="panelleft" Width="200">
-                    <StackPanel.Resources>
-                        <!--style cho button-->
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="#FF424A5D"></Setter>
-                            <Setter Property="BorderBrush" Value="{x:Null}"></Setter>
-                            <Setter Property="Height" Value="40"></Setter>
-                            <Setter Property="Foreground" Value="#FF85878D"></Setter>
-                            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-                            <Setter Property="Padding" Value="30 0 0 0"></Setter>
-                            <Setter Property="BorderBrush" Value="#FF424A5D"></Setter>
-                            <Setter Property="Width" Value="200"></Setter>
-                            <Setter Property="FontFamily" Value="Century Gothic"></Setter>
-
-                        </Style>
-                        <!--style cho icon-->
-                        <Style TargetType="materialDesign:PackIcon">
-                            <Setter Property="Margin" Value="30 0 5 0"></Setter>
-                            <Setter Property="Width" Value="25"></Setter>
-                            <Setter Property="Height" Value="25"></Setter>
-                        </Style>
-
-                        <!--style cho texblock-->
-                        <Style TargetType="TextBlock">
-                            <Setter Property="FontSize" Value="15"></Setter>
-                        </Style>
-                    </StackPanel.Resources>
-                    <Button>
-                        <DockPanel Width="{Binding Path=Width, ElementName=panelleft}">
-                            <materialDesign:PackIcon Kind="Puzzle"/>
-                            <TextBlock Text=" DaTaBroad"></TextBlock>
-                        </DockPanel>
-                    </Button>
-                    <Button>
-                        <DockPanel Width="{Binding Path=Width, ElementName=panelleft}">
-                            <materialDesign:PackIcon Kind="MaterialUi"/>
-                            <TextBlock Text=" UI Element"></TextBlock>
-                        </DockPanel>
-                    </Button>
-                    <Button>
-                        <DockPanel Width="{Binding Path=Width, ElementName=panelleft}">
-                            <materialDesign:PackIcon Kind="LockerMultiple"/>
-                            <TextBlock Text=" Compoment"></TextBlock>
-                        </DockPanel>
-                    </Button>
-                    <Button >
-                        <DockPanel Width="{Binding Path=Width, ElementName=panelleft}">
-                            <materialDesign:PackIcon Kind="GooglePages"/>
-                            <TextBlock Text=" Exstra Page"></TextBlock>
-                        </DockPanel>
-                    </Button>
-                    <Button>
-                        <DockPanel  HorizontalAlignment="Left" Width="{Binding Path=Width, ElementName=panelleft}">
-                            <materialDesign:PackIcon Kind="FormatPageBreak"/>
-                            <TextBlock Text=" Form"/>
-                        </DockPanel>
-                    </Button>
-                    <Button>
-                        <DockPanel  Width="{Binding Path=Width, ElementName=panelleft}">
-                            <materialDesign:PackIcon Kind="TableLarge"/>
-                            <TextBlock Text=" Data Table"></TextBlock>
-                        </DockPanel>
-                    </Button>
-                    <Button>
-                        <DockPanel  Width="{Binding Path=Width, ElementName=panelleft}">
-                            <materialDesign:PackIcon Kind="ChartPie"/>
-                            <TextBlock Text=" Charts"></TextBlock>
-                        </DockPanel>
-                    </Button>
-                </StackPanel>
-            </Grid>
+            <Expander MinWidth="300">
+                <ListView>
+                    <ListViewItem>
+                        <Button>
+                            <DockPanel Width="{Binding Path=Width, ElementName=panelleft}">
+                                <materialDesign:PackIcon Kind="Puzzle"/>
+                                <TextBlock Text=" DaTaBroad"></TextBlock>
+                            </DockPanel>
+                        </Button>
+                    </ListViewItem>
+                </ListView>
+                
+            </Expander>
+             
             <!--menu bên phải-->
             <materialDesign:Card Grid.Column="2">
 

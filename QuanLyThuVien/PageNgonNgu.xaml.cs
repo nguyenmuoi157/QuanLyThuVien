@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace QuanLyThuVien
 {
     /// <summary>
-    /// Interaction logic for LoginWindows.xaml
+    /// Interaction logic for PageNgonNgu.xaml
     /// </summary>
-    public partial class LoginWindows : Window
+    public partial class PageNgonNgu : Page
     {
-        public LoginWindows()
+        public PageNgonNgu()
         {
             InitializeComponent();
         }

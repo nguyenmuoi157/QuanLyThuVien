@@ -1,0 +1,106 @@
+﻿<Page x:Class="QuanLyThuVien.PageNguoiDung"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyThuVien"
+      mc:Ignorable="d" 
+      DataContext="{StaticResource NguoiDungViewModel}"
+      Name="PNguoiDung"
+      
+      Title="PageNguoiDung"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding PLoadCommand}" CommandParameter="{Binding  ElementName=PNguoiDung}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <StackPanel>
+        <Grid>
+            <!--||||||||||||||||||||||||||||||-->
+            <StackPanel VerticalAlignment="Top">
+                <materialDesign:Card>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Separator Background="WhiteSmoke"/>
+                                <StackPanel Margin="10 0">
+                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Nhập tên người dùng" Text="{Binding TenNguoiDung,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Email" Text="{Binding Email,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <PasswordBox Name="PasswordOrg" Margin="10 15" materialDesign:HintAssist.Hint="Mật Khẩu">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="PasswordChanged">
+                                                <i:InvokeCommandAction Command="{Binding PasswordChanged}" CommandParameter="{Binding  ElementName=PasswordOrg}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </PasswordBox>
+                                    <PasswordBox Name="RePassword" Margin="10 15" materialDesign:HintAssist.Hint="Nhập Lại Mật Khẩu">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="PasswordChanged">
+                                                <i:InvokeCommandAction Command="{Binding PasswordChanged}" CommandParameter="{Binding  ElementName=RePassword}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </PasswordBox>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Separator Background="WhiteSmoke"/>
+                                <StackPanel Margin="10 0">
+                                    <ComboBox SelectedItem="{Binding SelectedItemCbb}" Margin="10 15" materialDesign:HintAssist.Hint="Quyền Trong Hệ Thống" ItemsSource="{Binding ListNguoiDung}" DisplayMemberPath="{Binding QuyenHeThong.TenQuyen}"
+                                              IsEditable="True">
+                                        
+                                    </ComboBox>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Margin="10 15" Background="{x:Null}" BorderBrush="Gray" Height="45" Command="{Binding LoadImageCommand}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="UploadNetwork" Foreground="Gray"/>
+                                                <TextBlock Foreground="Gray" Text="Chọn Ảnh Đại Diện"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Image Margin="10 15" Height="150" Source="ResoucesXAML\no_img.jpg" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"  Margin="10 30">
+                                        <Button Margin="5" Width="100" Content="Thêm" Command="{Binding AddCommmand}"/>
+                                        <Button Margin="5" Width="100" Content="Sửa" Command="{Binding EditCommmand}"/>
+                                        <Button Margin="5" Width="100" Content="Xoá" Command="{Binding DeleteCommand}"/>
+                                    </StackPanel>
+
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Grid>
+                        <ScrollViewer Grid.Row="1">
+                            <ListView Margin="10" ItemsSource="{Binding ListNguoiDung}" SelectedItem="{Binding SelectedItem}">
+                                <ListView.View>
+                                    <GridView>
+                                       
+                                        <GridViewColumn Header="Mã Người Dùng" DisplayMemberBinding="{Binding Id}"/>
+                                        <GridViewColumn Header="Tên Người Dùng" DisplayMemberBinding="{Binding TenNguoiDung}"/>
+                                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"/>
+                                        <GridViewColumn Header="Quyền" DisplayMemberBinding="{Binding QuyenHeThong.TenQuyen}"/>
+                                        <GridViewColumn Header="Mật Khẩu" DisplayMemberBinding="{Binding MatKhau}"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+
+                    </Grid>
+                   
+                </materialDesign:Card>
+            </StackPanel>
+        </Grid>
+
+    </StackPanel>
+
+</Page>
+

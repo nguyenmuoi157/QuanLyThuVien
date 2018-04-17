@@ -1,0 +1,69 @@
+﻿<Page x:Class="QuanLyThuVien.PageTrangchu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyThuVien"
+      mc:Ignorable="d" 
+      Title="PageTrangchu"
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      >
+
+
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--báo cáo nhanh-->
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="0 20"/>
+                    <Setter Property="Foreground" Value="#FFBEBEBF"></Setter>
+                    <Setter Property="Background" Value="#FFF2F2F2"></Setter>
+                    <!--<Setter Property="FontWeight" Value="Bold"></Setter>-->
+                    <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+                    <Setter Property="FontSize" Value="20"></Setter>
+
+                </Style>
+                <Style TargetType="materialDesign:PackIcon">
+                    <Setter Property="Foreground" Value="#FFBEBEBF"></Setter>
+                    <Setter Property="Width" Value="100"></Setter>
+                    <Setter Property="Height" Value="100"></Setter>
+                </Style>
+            </Grid.Resources>
+
+            <StackPanel Grid.Column="0">
+
+                <TextBlock Text="Trái tim" TextAlignment="Center"></TextBlock>
+                <materialDesign:PackIcon Kind="HeartOutline" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                <TextBlock Text="+99" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 20"></TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock VerticalAlignment="Top" Text="Cloud" TextAlignment="Center"></TextBlock>
+                <materialDesign:PackIcon Kind="CloudOutline" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                <TextBlock Text="+99" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 20"></TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock VerticalAlignment="Top" Text="Hard disk" TextAlignment="Center"></TextBlock>
+                <materialDesign:PackIcon Kind="Harddisk" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="+99" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 20"></TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Column="3">
+                <TextBlock VerticalAlignment="Top" Text="Data Base" TextAlignment="Center"></TextBlock>
+                <materialDesign:PackIcon Kind="Database" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock Text="+99" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 20"></TextBlock>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

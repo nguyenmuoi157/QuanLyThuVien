@@ -1,0 +1,36 @@
+﻿<Page x:Class="QuanLyThuVien.NavNguoiDung"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyThuVien"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      
+      Title="NavNguoiDung">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel  Grid.Row="0">
+            <StackPanel Background="White">
+                <StackPanel Margin="10 0" Orientation="Horizontal" VerticalAlignment="Top">
+                    <Button Name="btnTaiLieu" Uid="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="NGƯỜI DÙNG" Width="150" Height="50" Click="Button_Click"/>
+                    <Button Name="btnNhaXuatBan" Uid="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="QUYỀN HỆ THỐNG" Width="150" Height="50" Click="Button_Click"/>
+                </StackPanel>
+                <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
+                    <Grid Name="GridCusor" Height="5" Width="150" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0"/>
+                </materialDesign:TransitioningContent>
+            </StackPanel>
+
+            <Frame Name="MainContent">
+
+            </Frame>
+
+        </StackPanel>
+
+
+    </Grid>
+</Page>

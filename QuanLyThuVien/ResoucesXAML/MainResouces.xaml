@@ -4,4 +4,13 @@
                     xmlns:viewmodel ="clr-namespace:QuanLyThuVien.ViewModel">
 
     <viewmodel:MainViewModel x:Key="MainViewModel"></viewmodel:MainViewModel>
+    <viewmodel:LoginWindowViewModel x:Key="LoginViewModel" ></viewmodel:LoginWindowViewModel>
+    <viewmodel:QuanLyBanDocViewModel x:Key="QLBanDocViewModel" ></viewmodel:QuanLyBanDocViewModel>
+    <viewmodel:ThemBanDocViewModel x:Key="AddBanDocViewModel" ></viewmodel:ThemBanDocViewModel>
+    <viewmodel:NgonNguViewModel x:Key="NgonNguViewModel" ></viewmodel:NgonNguViewModel>
+    <viewmodel:NguoiDungViewModel x:Key="NguoiDungViewModel" ></viewmodel:NguoiDungViewModel>
+    <viewmodel:TacGiaViewModel x:Key="TacGiaViewModel" ></viewmodel:TacGiaViewModel>
+    <viewmodel:NhaXuatBanViewModel x:Key="NhaXuatBanViewModel" ></viewmodel:NhaXuatBanViewModel>
+    <viewmodel:QuyenHeThongViewModel x:Key="QuyenHeThongViewModel" ></viewmodel:QuyenHeThongViewModel>
+
 </ResourceDictionary>

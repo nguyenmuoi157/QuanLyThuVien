@@ -21,6 +21,7 @@ namespace QuanLyThuVien.ViewModel
                 var w = window as Window;
                 if (w!=null)
                 {
+                   
                     w.Close();
                 }
 

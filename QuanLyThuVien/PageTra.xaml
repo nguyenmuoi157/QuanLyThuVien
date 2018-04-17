@@ -1,0 +1,133 @@
+﻿<Page x:Class="QuanLyThuVien.PageTra"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyThuVien"
+      mc:Ignorable="d" 
+      
+      Title="PageTra"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+      >
+    <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
+            <materialDesign:Card>
+            <StackPanel Grid.Column="0">
+                <Grid Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Margin="10" Kind="AccountCircle" Width="20" Height="20" VerticalAlignment="Stretch" />
+                        <TextBlock VerticalAlignment="Center" Text="Bạn Đọc" Foreground="#535351" FontSize="14" FontFamily="Open Sans, sans-serif"/>
+
+                    </StackPanel>
+
+
+                </Grid>
+                <Separator Background="Gray"/>
+                <ListView>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Tên">
+                                
+                            </GridViewColumn>
+                            <GridViewColumn Header="Mã Thẻ"/>
+                            <GridViewColumn Header="Email"/>
+                            <GridViewColumn Header="Số Điện Thoại"/>
+                            <GridViewColumn Header="Trạng Thái"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <Separator Background="Gray"/>
+                <Border BorderThickness="2">
+                    <StackPanel Margin="10">
+                        <CheckBox/>
+                        <CheckBox/>
+                        <CheckBox/>
+                        <CheckBox/>
+                        <CheckBox/>
+                    </StackPanel>
+                </Border>
+                <Separator Background="Gray"/>
+                <ListView Margin="10" ItemsSource="{ Binding ListPhieuMuon}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="STT"/>
+                            <GridViewColumn Header="Tên Bạn Đọc"/>
+                            <GridViewColumn Header="Mã Phiếu Mượn"/>
+                            <GridViewColumn Header="Ngày Mượn"/>
+                            <GridViewColumn Header="Ngày trả"/>
+                            <GridViewColumn Header="Trạng thái"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </materialDesign:Card>
+        </materialDesign:TransitioningContent>
+
+
+</Page>
+<!--<ListView Margin="10">
+    <ListView.View>
+        <GridView>
+            <GridViewColumn Header="STT"/>
+            <GridViewColumn Header="Mã sách"/>
+            <GridViewColumn Header="Tên sách"/>
+            <GridViewColumn Header="Nhan đề"/>
+            <GridViewColumn Header="Tác giả"/>
+            <GridViewColumn Header="Số lượng"/>
+            <GridViewColumn Header="Số trang"/>
+            <GridViewColumn Header="Giá bìa"/>
+        </GridView>
+    </ListView.View>
+</ListView>-->
+
+<!--<materialDesign:Card>
+    <StackPanel>
+        <Grid Margin="0 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <StackPanel Margin="20 0">
+                    <StackPanel Orientation="Vertical">
+                        <Grid>
+                            <TextBox HorizontalAlignment="Left"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Tên Sách (*)" />
+                            <TextBox HorizontalAlignment="Right"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Nhan Đề" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Grid >
+                            <ComboBox HorizontalAlignment="Left"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Tác Giả" />
+                            <TextBox HorizontalAlignment="Right"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Số Lượng" />
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Grid >
+                            <TextBox HorizontalAlignment="Left"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Số Trang (*)" />
+                            <TextBox HorizontalAlignment="Right"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Giá Bìa (*)" />
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Thêm" Width="100" Margin="5"/>
+                <Button Content="Xoá" Width="100" Margin="5"/>
+                <Button Content="Sửa" Width="100" Margin="5"/>
+            </StackPanel>
+        </Grid>
+        <ListView Margin="10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="STT"/>
+                    <GridViewColumn Header="Mã sách"/>
+                    <GridViewColumn Header="Tên sách"/>
+                    <GridViewColumn Header="Nhan đề"/>
+                    <GridViewColumn Header="Tác giả"/>
+                    <GridViewColumn Header="Số lượng"/>
+                    <GridViewColumn Header="Số trang"/>
+                    <GridViewColumn Header="Giá bìa"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </StackPanel>
+</materialDesign:Card>-->

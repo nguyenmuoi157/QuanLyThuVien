@@ -4,62 +4,44 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:uc ="clr-namespace:QuanLyThuVien.UserControlXAML"
-        xmlns:local="clr-namespace:QuanLyThuVien"
-        mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-     TextElement.FontWeight="Regular"
-     TextElement.FontSize="13"
-     TextOptions.TextFormattingMode="Ideal"
-     TextOptions.TextRenderingMode="Auto"
-     Background="{DynamicResource MaterialDesignPaper}"
-     FontFamily="{DynamicResource MaterialDesignFont}"
         Title="Đăng Nhập" Height="640" Width="1136"
         WindowStyle="None"
-        ResizeMode="NoResize"
->
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}" 
+        xmlns:local="clr-namespace:QuanLyThuVien" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Name="WindowsLogin"
+        DataContext="{StaticResource LoginViewModel}"
+        >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" MouseDown="Grid_MouseDown">
+        <Grid Grid.Row="0">
             <uc:UserControl_ControlBar></uc:UserControl_ControlBar>
         </Grid>
         <Grid Grid.Row="1">
             <Image Source="Resouces\login.jpg" Stretch="UniformToFill"></Image>
             <materialDesign:Card Width="300" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center">
-
                 <Grid>
-
-                    <Grid.Resources>
-                        <Style TargetType="TextBox">
-
-                        </Style>
-                    </Grid.Resources>
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-
                     <!--hình ảnh-->
                     <!--<Rectangle Grid.Row="0" Fill="DarkRed"></Rectangle>-->
                     <Image Grid.Row="0" Source="Resouces\Contact.png" Stretch="UniformToFill"></Image>
-
                     <!--phần textbox và button-->
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <!--<Grid.Resources>
-                            <Style TargetType="TextBox">
-                                <Setter Property="CaretBrush" Value="#FF85878D"></Setter>
-                                <Setter Property="FontFamily" Value="Century Gothic"></Setter>
-                                
-                                --><!--Foreground="#FF85878D" FontFamily="Century Gothic"--><!--
-                            </Style>
-                        </Grid.Resources>-->
                         <!--text box-->
                         <Grid Grid.Row="0">
                             <Grid.RowDefinitions>
@@ -68,27 +50,35 @@
                             </Grid.RowDefinitions>
                             <DockPanel  Grid.Row="0">
                                 <materialDesign:PackIcon Kind="Account" DockPanel.Dock="Left" VerticalAlignment="Bottom" Margin="5 0 0 10" />
-                                <TextBox  Margin="15 0" materialDesign:HintAssist.Hint="Tên Đăng Nhập" DockPanel.Dock="Right" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                                <TextBox  Margin="15 0"
+                                          materialDesign:HintAssist.Hint="Tên Đăng Nhập" 
+                                          DockPanel.Dock="Right" 
+                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                          Text="{Binding UserName}">
+                                    
+                                </TextBox>
                             </DockPanel>
                             <DockPanel  Grid.Row="1" >
                                 <materialDesign:PackIcon DockPanel.Dock="Left" Kind="Key" VerticalAlignment="Bottom" Margin="5 0 0 10"  />
-                                <PasswordBox DockPanel.Dock="Left" Margin="15 0" materialDesign:HintAssist.Hint="Mật Khẩu"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"></PasswordBox>
-
+                                <PasswordBox Name="PasswordBox" DockPanel.Dock="Left" Margin="15 0" materialDesign:HintAssist.Hint="Mật Khẩu"  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="PasswordChanged">
+                                            <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" CommandParameter="{Binding ElementName=PasswordBox}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </PasswordBox>
                             </DockPanel>
                         </Grid>
                         <!--button-->
-                        <Button Margin="15 0" Content="Đăng Nhập" Grid.Row="1" Style="{StaticResource MaterialDesignRaisedButton}" Width="auto">
-                        </Button>
+                        <Button IsDefault="True" Margin="15 0" Content="Đăng Nhập" 
+                                Grid.Row="1" Style="{StaticResource MaterialDesignRaisedButton}" 
+                                Width="auto"
+                                Command="{Binding BtnLoginClickCommand}" 
+                                CommandParameter="{Binding ElementName = WindowsLogin}"/>
                         <TextBlock Margin="0 10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Quên Mật Khẩu?"></TextBlock>
                     </Grid>
-
-
                 </Grid>
             </materialDesign:Card>
         </Grid>
-        
     </Grid>
-    
-
-
 </Window>

@@ -1,0 +1,203 @@
+﻿<Page x:Class="QuanLyThuVien.PageBanDoc"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyThuVien"
+      mc:Ignorable="d" 
+      Title="PageBanDoc"
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      DataContext="{StaticResource QLBanDocViewModel}"
+      >
+    <StackPanel>
+        <Grid>
+            <!--<Grid Height="150" VerticalAlignment="Top"  Background="#FF2094C8">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <TextBox Width="auto" Margin="10 0" materialDesign:HintAssist.Hint="Từ Khoá Tìm Kiếm"/>
+                    <Button Content="Tìm Kiếm"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                </StackPanel>
+            </Grid>-->
+
+            <!--||||||||||||||||||||||||||||||-->
+
+            <StackPanel>
+                <materialDesign:Card>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Grid Height="60">
+                                    <TextBlock Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Phần thứ nhất" FontWeight="Bold" Foreground="#535351" FontSize="14" FontFamily="Open Sans, sans-serif"></TextBlock>
+                                </Grid>
+                                <Separator Background="WhiteSmoke"/>
+                                <StackPanel Margin="10 0">
+                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Họ Tên (*)"/>
+                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Số điện thoại"/>
+                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Email"/>
+                                    <ComboBox Margin="10 15" materialDesign:HintAssist.Hint="Giới Tính">
+                                        <ComboBoxItem>Nam</ComboBoxItem>
+                                        <ComboBoxItem>Nữ</ComboBoxItem>
+                                    </ComboBox>
+                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Chứng Minh Thư"/>
+
+                                </StackPanel>
+
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Grid Height="60">
+                                    <TextBlock Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Phần Thứ Hai" FontWeight="Bold" Foreground="#535351" FontSize="14" FontFamily="Open Sans, sans-serif"></TextBlock>
+                                </Grid>
+                                <Separator Background="WhiteSmoke"/>
+                                <StackPanel Margin="10 0">
+                                    <DatePicker Margin="10 15" Name="LocaleDatePicker" materialDesign:HintAssist.Hint="Ngày Sinh" />
+                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Nghề Nghiệp"/>
+                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Địa Chỉ"/>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Margin="10 15" Background="{x:Null}" BorderBrush="Gray" Height="45">
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Kind="UploadNetwork" Foreground="Gray"/>
+                                                <TextBlock Foreground="Gray" Text="Chọn Ảnh Đại Diện"/>
+                                            </StackPanel>
+                                        </Button>
+                                        <Image Margin="10 15" Height="150" Source="ResoucesXAML\no_img.jpg" />
+                                    </StackPanel>
+                                    <StackPanel Margin="10 30" Orientation="Horizontal">
+                                        <Button Width="100" Margin="5" Content="Thêm"/>
+                                        <Button Width="100" Margin="5" Content="Sửa"/>
+                                        <Button Width="100" Margin="5" Content="Xoá"/>
+                                    </StackPanel>
+
+                                </StackPanel>
+
+                            </StackPanel>
+                        </Grid>
+                        <ScrollViewer Grid.Row="1">
+                            <ListView Margin="10">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="STT"></GridViewColumn>
+                                        <GridViewColumn Header="Mã Số Thẻ"></GridViewColumn>
+                                        <GridViewColumn Header="Họ Tên"></GridViewColumn>
+                                        <GridViewColumn Header="Ngày Sinh"></GridViewColumn>
+                                        <GridViewColumn Header="Giới Tính"></GridViewColumn>
+                                        <GridViewColumn Header="CMTND"></GridViewColumn>
+                                        <GridViewColumn Header="Số Điện Thoại"></GridViewColumn>
+                                        <GridViewColumn Header="Email"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+
+                    </Grid>
+
+                </materialDesign:Card>
+            </StackPanel>
+        </Grid>
+
+    </StackPanel>
+
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"  Margin="20">
+            <TextBlock Text="Quản Lý Bạn Đọc" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="0 20"></TextBlock>
+            <materialDesign:Card>
+                <Grid>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBox Margin="5" Width="100" materialDesign:HintAssist.Hint="Từ Khoá Tìm Kiếm"></TextBox>
+                        <TextBox Margin="5" Width="100" materialDesign:HintAssist.Hint="Mã Số Thẻ"></TextBox>
+                        <TextBox Margin="5" Width="100" materialDesign:HintAssist.Hint="Tên Bạn Đọc"></TextBox>
+                        <Button Content="Tìm Kiếm" Margin="10"></Button>
+                    </StackPanel>
+                </Grid>
+
+
+            </materialDesign:Card>
+            <Grid Margin="0 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <Grid >
+                                    <TextBox HorizontalAlignment="Left" DockPanel.Dock="Left"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Họ Tên (*)" />
+                                    <DatePicker Margin="5 10" HorizontalAlignment="Right" DockPanel.Dock="Right" Width="300" Name="LocaleDatePicker" materialDesign:HintAssist.Hint="Ngày Sinh" />
+                                </Grid>
+
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <Grid >
+                                    <TextBox HorizontalAlignment="Left"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Email" />
+                                    <ComboBox HorizontalAlignment="Right" Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Giới Tính">
+                                        <ComboBoxItem>Nam</ComboBoxItem>
+                                        <ComboBoxItem>Nữ</ComboBoxItem>
+                                    </ComboBox>
+                                </Grid>
+
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <Grid >
+                                    <TextBox HorizontalAlignment="Left"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Số Điện Thoại (*)" />
+                                    <TextBox HorizontalAlignment="Right"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Số CMTND (*)" />
+
+                                </Grid>
+
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <Grid >
+                                    <TextBox HorizontalAlignment="Left"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Nghề Nghiệp" />
+                                    <TextBox HorizontalAlignment="Right"  Margin="5 10" Width="300" materialDesign:HintAssist.Hint="Địa Chỉ" />
+                                </Grid>
+
+                            </StackPanel>
+
+                            <Grid>
+                                <Button HorizontalAlignment="Left" Margin="5 10" Content="Hình Đại Diện"></Button>
+                                <TextBlock HorizontalAlignment="Left"  Margin="5 10" Width="300" />
+                            </Grid>
+                            <Image Source="{Binding}"></Image>
+                        </StackPanel>
+
+
+                    </ScrollViewer>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Thêm" Width="100" Margin="5"></Button>
+                    <Button Content="Xoá" Width="100" Margin="5"></Button>
+                    <Button Content="Sửa" Width="100" Margin="5"></Button>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        
+        <ListView Grid.Row="1" Margin="10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="STT"></GridViewColumn>
+                    <GridViewColumn Header="Mã Số Thẻ"></GridViewColumn>
+                    <GridViewColumn Header="Họ Tên"></GridViewColumn>
+                    <GridViewColumn Header="Ngày Sinh"></GridViewColumn>
+                    <GridViewColumn Header="Giới Tính"></GridViewColumn>
+                    <GridViewColumn Header="CMTND"></GridViewColumn>
+                    <GridViewColumn Header="Số Điện Thoại"></GridViewColumn>
+                    <GridViewColumn Header="Email"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>-->
+</Page>

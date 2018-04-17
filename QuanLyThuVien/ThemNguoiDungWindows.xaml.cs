@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace QuanLyThuVien
 {
     /// <summary>
-    /// Interaction logic for LoginWindows.xaml
+    /// Interaction logic for ThemNguoiDungWindows.xaml
     /// </summary>
-    public partial class LoginWindows : Window
+    public partial class ThemNguoiDungWindows : Window
     {
-        public LoginWindows()
+        public ThemNguoiDungWindows()
         {
             InitializeComponent();
         }

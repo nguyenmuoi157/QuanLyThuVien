@@ -1,0 +1,55 @@
+﻿<Page x:Class="QuanLyThuVien.PageQuyenHeThong"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyThuVien"
+      mc:Ignorable="d"
+      Name="PQuyen"
+      Title="PageQuyenHeThong"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        DataContext="{StaticResource QuyenHeThongViewModel}"
+      >
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding PLoadCommand}" CommandParameter="{Binding  ElementName=PQuyen}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
+        <materialDesign:Card>
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <Separator Background="WhiteSmoke"/>
+                        <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Tên Quyền (*)" Text="{Binding TxtQuyenHeThong,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Separator Background="WhiteSmoke"/>
+                        <StackPanel Orientation="Horizontal"  Margin="10 30">
+                            <Button Margin="5" Width="100" Content="Thêm" Command="{Binding AddCommmand}"/>
+                            <Button Margin="5" Width="100" Content="Sửa" Command="{Binding EditCommmand}"/>
+                            <Button Margin="5" Width="100" Content="Xoá" Command="{Binding DeleteCommand}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                <ScrollViewer>
+                    <ListView Margin="10" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="Tên Quyền" DisplayMemberBinding="{Binding TenQuyen}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </StackPanel>
+        </materialDesign:Card>
+    </materialDesign:TransitioningContent>
+
+</Page>

@@ -22,7 +22,7 @@ namespace QuanLyThuVien
         public MainWindows()
         {
             InitializeComponent();
-            MainContent.Children.Add(new UserControlDaTaBroad());
+            
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -39,16 +39,6 @@ namespace QuanLyThuVien
         {
             int index = ListViewMenu.SelectedIndex;
             MovieCusorMenu(index);
-
-            switch (index)
-            {
-                case 0:
-                    MainContent.Children.Clear();
-                    MainContent.Children.Add(new UserControlDaTaBroad());
-                    break;
-                default:
-                    break;
-            }
         }
 
         private void MovieCusorMenu(int index)
