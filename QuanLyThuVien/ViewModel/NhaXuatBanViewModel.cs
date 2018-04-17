@@ -33,8 +33,8 @@ namespace QuanLyThuVien.ViewModel
             }
         }
 
-        private string _txtNhaXuatBan = "";
-        public string TenNhaXuatBan { get => _txtNhaXuatBan; set { _txtNhaXuatBan = value; OnPropertyChanged(); } }
+        private string _TenNhaXuatBan = "";
+        public string TenNhaXuatBan { get => _TenNhaXuatBan; set { _TenNhaXuatBan = value; OnPropertyChanged(); } }
 
         private string _Email;
         public string Email { get => _Email; set { _Email = value; OnPropertyChanged(); } }
@@ -104,17 +104,8 @@ namespace QuanLyThuVien.ViewModel
         private void LoadNhaXuatBan()
         {
 
-            List = new ObservableCollection<NhaXuatBan>();
-            var lNhaXuatBan = Dataprovider.Ins.DB.NhaXuatBans;
-
-            foreach (var item in lNhaXuatBan)
-            {
-
-                NhaXuatBan _nhaxuatban = new NhaXuatBan();
-                _nhaxuatban.Id = item.Id;
-                _nhaxuatban.TenNhaXuatBan = item.TenNhaXuatBan;
-                List.Add(_nhaxuatban);
-            }
+            List = new ObservableCollection<NhaXuatBan>(Dataprovider.Ins.DB.NhaXuatBans);
+            
         }
 
     }

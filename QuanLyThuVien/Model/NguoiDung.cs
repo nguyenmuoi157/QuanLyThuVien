@@ -6,28 +6,41 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+using QuanLyThuVien.ViewModel;
 namespace QuanLyThuVien.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class NguoiDung
+    public partial class NguoiDung:BaseViewModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NguoiDung()
         {
             this.ChiTietPhieuMuons = new HashSet<ChiTietPhieuMuon>();
         }
-    
-        public int Id { get; set; }
-        public string TenNguoiDung { get; set; }
-        public string Email { get; set; }
-        public string MatKhau { get; set; }
-        public int IdQuyen { get; set; }
-    
+
+        private int _Id;
+        public int Id { get => _Id; set { _Id = value;OnPropertyChanged(); } }
+
+        public string _TenNguoiDung;
+        public string TenNguoiDung { get => _TenNguoiDung; set { _TenNguoiDung = value; OnPropertyChanged(); } }
+
+        public string _HinhAnh;
+        public string HinhAnh { get => _HinhAnh; set { _HinhAnh = value; OnPropertyChanged(); } }
+
+        private int _IdQuyen;
+        public int IdQuyen { get => _IdQuyen; set { _IdQuyen = value; OnPropertyChanged(); } }
+
+        public string _Email;
+        public string Email { get => _Email; set { _Email = value; OnPropertyChanged(); } }
+        public string _MatKhau;
+        public string MatKhau { get => _MatKhau; set { _MatKhau = value; OnPropertyChanged(); } }
+
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietPhieuMuon> ChiTietPhieuMuons { get; set; }
         public virtual QuyenHeThong QuyenHeThong { get; set; }
+        
     }
 }

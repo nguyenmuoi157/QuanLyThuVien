@@ -35,16 +35,16 @@
                             <StackPanel Grid.Column="0">
                                 <Separator Background="WhiteSmoke"/>
                                 <StackPanel Margin="10 0">
-                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Nhập tên người dùng" Text="{Binding TenNguoiDung,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Email" Text="{Binding Email,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                    <PasswordBox Name="PasswordOrg" Margin="10 15" materialDesign:HintAssist.Hint="Mật Khẩu">
+                                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Nhập tên người dùng" Text="{Binding TenNguoiDung,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Email" Text="{Binding Email,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"  Name="PasswordOrg" Margin="10 15" materialDesign:HintAssist.Hint="Mật Khẩu">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="PasswordChanged">
                                                 <i:InvokeCommandAction Command="{Binding PasswordChanged}" CommandParameter="{Binding  ElementName=PasswordOrg}"/>
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </PasswordBox>
-                                    <PasswordBox Name="RePassword" Margin="10 15" materialDesign:HintAssist.Hint="Nhập Lại Mật Khẩu">
+                                    <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Name="RePassword" Margin="10 15" materialDesign:HintAssist.Hint="Nhập Lại Mật Khẩu">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="PasswordChanged">
                                                 <i:InvokeCommandAction Command="{Binding PasswordChanged}" CommandParameter="{Binding  ElementName=RePassword}"/>
@@ -56,7 +56,7 @@
                             <StackPanel Grid.Column="1">
                                 <Separator Background="WhiteSmoke"/>
                                 <StackPanel Margin="10 0">
-                                    <ComboBox SelectedItem="{Binding SelectedItemCbb}" Margin="10 15" materialDesign:HintAssist.Hint="Quyền Trong Hệ Thống" ItemsSource="{Binding ListNguoiDung}" DisplayMemberPath="{Binding QuyenHeThong.TenQuyen}"
+                                    <ComboBox Height="37" SelectedItem="{Binding SelectedItemQuyen}" Margin="10 15" materialDesign:HintAssist.Hint="Quyền Trong Hệ Thống" ItemsSource="{Binding ListQuyen}" DisplayMemberPath="TenQuyen"
                                               IsEditable="True">
                                         
                                     </ComboBox>
@@ -67,7 +67,7 @@
                                                 <TextBlock Foreground="Gray" Text="Chọn Ảnh Đại Diện"/>
                                             </StackPanel>
                                         </Button>
-                                        <Image Margin="10 15" Height="150" Source="ResoucesXAML\no_img.jpg" />
+                                        <Image Margin="10 15" Height="150" Source="{Binding ImageSource}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal"  Margin="10 30">
                                         <Button Margin="5" Width="100" Content="Thêm" Command="{Binding AddCommmand}"/>
@@ -88,7 +88,6 @@
                                         <GridViewColumn Header="Tên Người Dùng" DisplayMemberBinding="{Binding TenNguoiDung}"/>
                                         <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"/>
                                         <GridViewColumn Header="Quyền" DisplayMemberBinding="{Binding QuyenHeThong.TenQuyen}"/>
-                                        <GridViewColumn Header="Mật Khẩu" DisplayMemberBinding="{Binding MatKhau}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
