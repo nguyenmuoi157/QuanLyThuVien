@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace QuanLyThuVien
 {
     /// <summary>
-    /// Interaction logic for TaiLieu.xaml
+    /// Interaction logic for PageViTri.xaml
     /// </summary>
-    public partial class TaiLieu : Page
+    public partial class PageViTri : Page
     {
-        public TaiLieu()
+        public PageViTri()
         {
             InitializeComponent();
         }

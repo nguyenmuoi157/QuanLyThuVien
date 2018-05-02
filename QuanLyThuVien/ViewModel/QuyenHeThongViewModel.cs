@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using QuanLyThuVien.Model;
@@ -47,7 +48,7 @@ namespace QuanLyThuVien.ViewModel
                     return false;
                 return true;
             }, (p) => {
-                var quyenhethong = new QuyenHeThong() { TenQuyen = TxtQuyenHeThong };
+                var quyenhethong = new QuyenHeThong() { TenQuyen = TxtQuyenHeThong};
                 Dataprovider.Ins.DB.QuyenHeThongs.Add(quyenhethong);
                 Dataprovider.Ins.DB.SaveChanges();
                 List.Add(quyenhethong);
@@ -66,6 +67,25 @@ namespace QuanLyThuVien.ViewModel
                 Dataprovider.Ins.DB.SaveChanges();
 
                 SelectedItem.TenQuyen = TxtQuyenHeThong;
+            });
+
+            DeleteCommmand = new RelayCommand<object>((p)=> { if (SelectedItem == null) return false; return true; },(p)=> {
+                MessageBoxResult dr = MessageBox.Show("Nếu bạn xoá quyền " + SelectedItem.TenQuyen + " thì những người dùng có quyền  " + SelectedItem.TenQuyen + " cũng sẽ bị xoá. Bạn có chắc chắn muốn xoá không?", "Cảnh Báo", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+                if (dr == MessageBoxResult.No)
+                    return;
+                try
+                {
+                    XoaDuLieu.XoaQuyenHeThong(SelectedItem);
+                  
+                }
+                catch (Exception e)
+                {
+
+                    MessageBox.Show(e.ToString());
+                }
+                
+
+
             });
         }
 

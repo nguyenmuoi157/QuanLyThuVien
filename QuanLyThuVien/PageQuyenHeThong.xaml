@@ -27,14 +27,14 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0">
                         <Separator Background="WhiteSmoke"/>
-                        <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Tên Quyền (*)" Text="{Binding TxtQuyenHeThong,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Tên Quyền (*)" Text="{Binding TxtQuyenHeThong,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
                         <Separator Background="WhiteSmoke"/>
                         <StackPanel Orientation="Horizontal"  Margin="10 30">
                             <Button Margin="5" Width="100" Content="Thêm" Command="{Binding AddCommmand}"/>
                             <Button Margin="5" Width="100" Content="Sửa" Command="{Binding EditCommmand}"/>
-                            <Button Margin="5" Width="100" Content="Xoá" Command="{Binding DeleteCommand}"/>
+                            <Button Margin="5" Width="100" Content="Xoá" Command="{Binding DeleteCommmand}"/>
                         </StackPanel>
                     </StackPanel>
                 </Grid>

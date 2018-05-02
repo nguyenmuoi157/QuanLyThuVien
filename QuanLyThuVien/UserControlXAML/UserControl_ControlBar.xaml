@@ -30,10 +30,10 @@
 
 
         <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center">
-            <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
+            <Button Click="Button_Click" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
                 <materialDesign:PackIcon Kind="GithubCircle" ></materialDesign:PackIcon>
             </Button>
-            <Button  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
+            <Button Click="Button_Click_1"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
                 <materialDesign:PackIcon Kind="FacebookBox"   ></materialDesign:PackIcon>
             </Button>
         </StackPanel>

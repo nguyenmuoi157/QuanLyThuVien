@@ -6,8 +6,17 @@
       xmlns:local="clr-namespace:QuanLyThuVien"
       mc:Ignorable="d" 
       Title="PageMuon"
+      Name="PMuon"
+      DataContext="{StaticResource MuonViewModel}"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding PLoadCommand}" CommandParameter="{Binding  ElementName=PMuon}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
         <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
             <materialDesign:Card>
@@ -22,80 +31,48 @@
                                 <TextBlock Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Phần thứ nhất" FontWeight="Bold" Foreground="#535351" FontSize="14" FontFamily="Open Sans, sans-serif"></TextBlock>
                             </Grid>
                             <Separator Background="WhiteSmoke"/>
-                            <ComboBox Margin="10 15" materialDesign:HintAssist.Hint="Chọn tên sách"
-                          IsEditable="True"
-                          materialDesign:HintAssist.HintOpacity=".26">
-                                <ComboBoxItem>
-                                    Apple
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Banana
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Pear
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Orange
-                                </ComboBoxItem>
-                            </ComboBox>
-                            <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Nhập Số Lượng"
-                                     materialDesign:HintAssist.HintOpacity=".26"/>
-                            <Button Margin="10 20 10 50">
-                                <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="Check"/>
-                                    <TextBlock Margin="5 0" VerticalAlignment="Center" Text="Thêm sách"/>
-                                </StackPanel>
-                            </Button>
+                            <ComboBox DisplayMemberPath="TuaDe" ItemsSource="{Binding ListSach}" SelectedItem="{Binding SelectedSach}" Margin="10 15" materialDesign:HintAssist.Hint="Chọn tên sách"
+                          IsEditable="True"/>
+                            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding SoLuong,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="10 15" materialDesign:HintAssist.Hint="Nhập Số Lượng"/>
+                            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding TinhTrang,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="10 15" materialDesign:HintAssist.Hint="Tình Trạng Sách"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Command="{Binding ThemSachCommand}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Kind="Check"/>
+                                        <TextBlock Margin="5 0" VerticalAlignment="Center" Text="Thêm sách"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Margin="5" Width="100" Content="Xoá" Command="{Binding DeleteCommmand}"/>
 
+                            </StackPanel>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
                             <Grid Height="60">
                                 <TextBlock Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="Phần thứ hai" FontWeight="Bold" Foreground="#535351" FontSize="14" FontFamily="Open Sans, sans-serif"></TextBlock>
                             </Grid>
                             <Separator Background="WhiteSmoke"/>
-                            <DatePicker Margin="10 15" materialDesign:HintAssist.Hint="Ngày Mượn"
+                            <DatePicker Text="{Binding NgayMuon,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="10 15" materialDesign:HintAssist.Hint="Ngày Mượn"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                            <DatePicker Margin="10 15" materialDesign:HintAssist.Hint="Ngày trả"
+                            <DatePicker Text="{Binding NgayTra,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="10 25" materialDesign:HintAssist.Hint="Ngày trả"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
 
-                            <ComboBox Margin="10 15" materialDesign:HintAssist.Hint="Tìm ID Bạn Đọc"
-                          IsEditable="True"
-                          materialDesign:HintAssist.HintOpacity=".26">
-                                <ComboBoxItem>
-                                    Apple
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Banana
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Pear
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    Orange
-                                </ComboBoxItem>
-                            </ComboBox>
-                            <StackPanel Margin="10 15" Orientation="Horizontal">
-                                <Button>
-                                    <materialDesign:PackIcon Kind="Check"/>
-                                </Button>
-                                <TextBlock Margin="5 0" VerticalAlignment="Center" Text="Kiểm tra ID"/>
-                                <TextBlock VerticalAlignment="Center" Margin="5 0" Foreground="OrangeRed" Text="ID không tồn tại"/>
-                            </StackPanel>
+                            <ComboBox DisplayMemberPath="Id" ItemsSource="{Binding ListID}" SelectedItem="{Binding SelectedID}" Margin="10 15" materialDesign:HintAssist.Hint="Tìm ID Bạn Đọc" IsEditable="True"/>
+                            <ComboBox DisplayMemberPath="TenNguoiDung" ItemsSource="{Binding ListNguoiDung}" SelectedItem="{Binding SelectedNguoiDung}" Margin="10 15" materialDesign:HintAssist.Hint="Nhân Viên" IsEditable="True"/>
+
                             <StackPanel Orientation="Horizontal"  Margin="10 30">
-                                <Button Margin="5" Width="100" Content="Thêm"/>
-                                <Button Margin="5" Width="100" Content="Sửa"/>
-                                <Button Margin="5" Width="100" Content="Xoá"/>
+                                <Button Margin="5" Width="100" Content="Thêm" Command="{Binding AddCommmand}"/>
+                                <!--<Button Margin="5" Width="100" Content="Sửa" Command="{Binding EditCommmand}"/>-->
                             </StackPanel>
 
                         </StackPanel>
                     </Grid>
                     <ScrollViewer>
-                        <ListView Margin="10">
+                        <ListView Margin="10" ItemsSource="{Binding List1}" SelectedItem="{Binding SelectedItem}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="STT"/>
-                                    <GridViewColumn Header="Tên Sách"/>
-                                    <GridViewColumn Header="Số Lượng"/>
+                                    <GridViewColumn Header="Tựa Đề Sách" DisplayMemberBinding="{Binding TuaDe}"/>
+                                    <GridViewColumn Header="Số Lượng" DisplayMemberBinding="{Binding SoLuong}"/>
+                                    <GridViewColumn Header="Tình Trạng" DisplayMemberBinding="{Binding TinhTrang}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>

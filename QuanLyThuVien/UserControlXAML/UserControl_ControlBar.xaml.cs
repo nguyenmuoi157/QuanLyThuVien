@@ -29,6 +29,14 @@ namespace QuanLyThuVien.UserControlXAML
             this.DataContext = ViewModel;
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/nguyenmuoi157/QuanLyThuVien");
+        }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.facebook.com/konoha.akatshuki");
+        }
     }
 }

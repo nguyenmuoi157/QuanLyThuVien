@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using QuanLyThuVien.Model;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace QuanLyThuVien.ViewModel
 {
@@ -20,7 +21,7 @@ namespace QuanLyThuVien.ViewModel
         public ICommand PLoadCommand { get; set; }
         public ICommand BtnAddCommmand{get;set;}
         public ICommand EditCommmand { get; set; }
-        public ICommand DeleteCommmand { get; set; }
+        public ICommand DeleteCommand { get; set; }
 
         private NgonNgu _SelectedItem;
         public NgonNgu SelectedItem { get=>_SelectedItem; set { _SelectedItem = value;OnPropertyChanged(); if (_SelectedItem != null) TxtNgonNgu = SelectedItem.TenNgonNgu; } }
@@ -66,22 +67,31 @@ namespace QuanLyThuVien.ViewModel
 
                 SelectedItem.TenNgonNgu = TxtNgonNgu;
             });
+            DeleteCommand = new RelayCommand<object>((p) => { if (SelectedItem == null) return false; return true; }, (p) => {
+                MessageBoxResult dr = MessageBox.Show("Nếu bạn xoá ngôn ngữ " + SelectedItem.TenNgonNgu + " thì những tài liệu có ngôn ngữ  " + SelectedItem.TenNgonNgu + " cũng sẽ bị xoá. Bạn có chắc chắn muốn xoá không?", "Cảnh Báo", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+                if (dr == MessageBoxResult.No)
+                    return;
+                try
+                {
+                    ListNgonNgu.Remove(SelectedItem);
+                    XoaDuLieu.XoaNgonNgu(SelectedItem);
+
+
+                }
+                catch (Exception e)
+                {
+
+                    MessageBox.Show(e.ToString());
+                }
+
+
+
+            });
         }
 
         private void LoadNgonNgu()
         {
-
-            ListNgonNgu = new ObservableCollection<NgonNgu>();
-            var lNgonNgu = Dataprovider.Ins.DB.NgonNgus;
-
-            foreach (var item in lNgonNgu)
-            {
-
-                NgonNgu _ngonngu = new NgonNgu();
-                _ngonngu.Id = item.Id;
-                _ngonngu.TenNgonNgu = item.TenNgonNgu;
-                ListNgonNgu.Add(_ngonngu);
-            }
+            ListNgonNgu = new ObservableCollection<NgonNgu>(Dataprovider.Ins.DB.NgonNgus);
         }
     }
  }

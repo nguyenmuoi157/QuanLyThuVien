@@ -1,19 +1,20 @@
-﻿<Page x:Class="QuanLyThuVien.PageTacGia"
+﻿<Page x:Class="QuanLyThuVien.PageTheLoai"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuanLyThuVien"
       mc:Ignorable="d" 
-      Title="PageNhaXuatBan"
-      Name="PTacGia"
-      DataContext="{StaticResource TacGiaViewModel}"
+      DataContext="{StaticResource TheLoaiViewModel}"
+      Name="PTheLoai"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      Uid="3">
+      Title="PageTheLoai"
+      Uid="5">
+
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding PLoadCommand}" CommandParameter="{Binding  ElementName=PTacGia}"/>
+            <i:InvokeCommandAction Command="{Binding PLoadCommand}" CommandParameter="{Binding  ElementName=PTheLoai}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
@@ -29,7 +30,7 @@
                             <TextBlock Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="" FontWeight="Bold" Foreground="#535351" FontSize="14" FontFamily="Open Sans, sans-serif"></TextBlock>
                         </Grid>
                         <Separator Background="WhiteSmoke"/>
-                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Tên Tác Giả(*)" Text="{Binding TxtTacGia,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Tên Thể Loại(*)" Text="{Binding TxtTheLoai,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
                         <Grid Height="60">
@@ -48,13 +49,14 @@
                     <ListView Margin="10" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Mã Tác Giả" DisplayMemberBinding="{Binding Id}"/>
-                                <GridViewColumn Header="Tên Tác Giả" DisplayMemberBinding="{Binding TenTacGia}"/>
+                                <GridViewColumn Header="Mã Thể Loại" DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="Tên Thể Loại" DisplayMemberBinding="{Binding TenTheLoai}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </ScrollViewer>
             </StackPanel>
         </materialDesign:Card>
+
     </materialDesign:TransitioningContent>
 </Page>

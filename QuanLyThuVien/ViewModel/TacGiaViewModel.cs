@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using QuanLyThuVien.Model;
@@ -19,7 +20,7 @@ namespace QuanLyThuVien.ViewModel
         public ICommand PLoadCommand { get; set; }
         public ICommand AddCommmand { get; set; }
         public ICommand EditCommmand { get; set; }
-        public ICommand DeleteCommmand { get; set; }
+        public ICommand DeleteCommand { get; set; }
 
         private TacGia  _SelectedItem;
         public TacGia SelectedItem { get => _SelectedItem; set { _SelectedItem = value; OnPropertyChanged(); if (_SelectedItem != null) TxtTacGia = SelectedItem.TenTacGia; } }
@@ -34,7 +35,7 @@ namespace QuanLyThuVien.ViewModel
                 if (p == null)
                     return;
                 LoadTacGia();
-
+                var a = p.Parent;
             });
             AddCommmand = new RelayCommand<object>((p) => {
                 if (string.IsNullOrEmpty(TxtTacGia) || string.IsNullOrWhiteSpace(TxtTacGia))
@@ -61,25 +62,31 @@ namespace QuanLyThuVien.ViewModel
                 var tacgia = Dataprovider.Ins.DB.TacGias.Where(x => x.Id == SelectedItem.Id).SingleOrDefault();
                 tacgia.TenTacGia = TxtTacGia;
                 Dataprovider.Ins.DB.SaveChanges();
-
                 SelectedItem.TenTacGia = TxtTacGia;
+            });
+            DeleteCommand = new RelayCommand<object>((p) => { if (SelectedItem == null) return false; return true; }, (p) => {
+                MessageBoxResult dr = MessageBox.Show("Nếu bạn xoá ngôn ngữ " + SelectedItem.TenTacGia + " thì những tài liệu có ngôn ngữ  " + SelectedItem.TenTacGia + " cũng sẽ bị xoá. Bạn có chắc chắn muốn xoá không?", "Cảnh Báo", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+                if (dr == MessageBoxResult.No)
+                    return;
+                try
+                {
+                    List.Remove(SelectedItem);
+                    XoaDuLieu.XoaTacGia(SelectedItem);
+                    SelectedItem = null;
+                }
+                catch (Exception e)
+                {
+
+                    MessageBox.Show(e.ToString());
+                }
+                
+                
             });
         }
 
         private void LoadTacGia()
         {
-
-            List = new ObservableCollection<TacGia>();
-            var lTacGia = Dataprovider.Ins.DB.TacGias;
-
-            foreach (var item in lTacGia)
-            {
-
-                TacGia _tacgia = new TacGia();
-                _tacgia.Id = item.Id;
-                _tacgia.TenTacGia = item.TenTacGia;
-                List.Add(_tacgia);
-            }
+            List = new ObservableCollection<TacGia>(Dataprovider.Ins.DB.TacGias);
         }
 
     }

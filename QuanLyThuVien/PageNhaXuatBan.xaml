@@ -10,7 +10,7 @@
       DataContext="{StaticResource NhaXuatBanViewModel}"
        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      >
+      Uid="2">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding PLoadCommand}" CommandParameter="{Binding  ElementName=PNhaXuatBan}"/>

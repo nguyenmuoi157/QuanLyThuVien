@@ -67,12 +67,13 @@
                                                 <TextBlock Foreground="Gray" Text="Chọn Ảnh Đại Diện"/>
                                             </StackPanel>
                                         </Button>
-                                        <Image Margin="10 15" Height="150" Source="{Binding ImageSource}" />
+                                        <!--hình ảnh-->
+                                        <Image Margin="10 15" Height="150" Source="{Binding ImageSource,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal"  Margin="10 30">
                                         <Button Margin="5" Width="100" Content="Thêm" Command="{Binding AddCommmand}"/>
                                         <Button Margin="5" Width="100" Content="Sửa" Command="{Binding EditCommmand}"/>
-                                        <Button Margin="5" Width="100" Content="Xoá" Command="{Binding DeleteCommand}"/>
+                                        <Button Margin="5" Width="100" Content="Xoá" Command="{Binding DeleteCommmand}"/>
                                     </StackPanel>
 
                                 </StackPanel>

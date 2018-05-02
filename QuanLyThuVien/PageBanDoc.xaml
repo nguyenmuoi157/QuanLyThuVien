@@ -6,23 +6,18 @@
       xmlns:local="clr-namespace:QuanLyThuVien"
       mc:Ignorable="d" 
       Title="PageBanDoc"
-      
+      Name="PBanDoc"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       DataContext="{StaticResource QLBanDocViewModel}"
       >
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding PLoadCommand}" CommandParameter="{Binding  ElementName=PBanDoc}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <StackPanel>
         <Grid>
-            <!--<Grid Height="150" VerticalAlignment="Top"  Background="#FF2094C8">
-                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBox Width="auto" Margin="10 0" materialDesign:HintAssist.Hint="Từ Khoá Tìm Kiếm"/>
-                    <Button Content="Tìm Kiếm"/>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
-                </StackPanel>
-            </Grid>-->
-
-            <!--||||||||||||||||||||||||||||||-->
-
             <StackPanel>
                 <materialDesign:Card>
                     <Grid>
@@ -41,14 +36,12 @@
                                 </Grid>
                                 <Separator Background="WhiteSmoke"/>
                                 <StackPanel Margin="10 0">
-                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Họ Tên (*)"/>
-                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Số điện thoại"/>
-                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Email"/>
-                                    <ComboBox Margin="10 15" materialDesign:HintAssist.Hint="Giới Tính">
-                                        <ComboBoxItem>Nam</ComboBoxItem>
-                                        <ComboBoxItem>Nữ</ComboBoxItem>
-                                    </ComboBox>
-                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Chứng Minh Thư"/>
+                                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Họ Tên (*)" Text="{Binding HoTen,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Số điện thoại" Text="{Binding SoDienThoai,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Email" Text="{Binding Email,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <ComboBox ItemsSource="{Binding ListGioiTinh}" DisplayMemberPath="GioiTinh" SelectedItem="{Binding SelectedGioiTinh,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Margin="10 15" materialDesign:HintAssist.Hint="Giới Tính"/>
+
+                                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Chứng Minh Thư" Text="{Binding ChungMinhThu,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
 
                                 </StackPanel>
 
@@ -59,22 +52,23 @@
                                 </Grid>
                                 <Separator Background="WhiteSmoke"/>
                                 <StackPanel Margin="10 0">
-                                    <DatePicker Margin="10 15" Name="LocaleDatePicker" materialDesign:HintAssist.Hint="Ngày Sinh" />
-                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Nghề Nghiệp"/>
-                                    <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Địa Chỉ"/>
+                                    <DatePicker  Margin="10 20" Name="LocaleDatePicker" materialDesign:HintAssist.Hint="Ngày Sinh"  Text="{Binding NgaySinh,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Nghề Nghiệp" Text="{Binding NgheNghiep,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                    <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Địa Chỉ" Text="{Binding DiaChi,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                                     <StackPanel Orientation="Horizontal">
-                                        <Button Margin="10 15" Background="{x:Null}" BorderBrush="Gray" Height="45">
+                                        <Button Margin="10 15" Background="{x:Null}" BorderBrush="Gray" Height="45" Command="{Binding LoadImageCommand}">
                                             <StackPanel Orientation="Horizontal">
                                                 <materialDesign:PackIcon Kind="UploadNetwork" Foreground="Gray"/>
-                                                <TextBlock Foreground="Gray" Text="Chọn Ảnh Đại Diện"/>
+                                                <TextBlock Foreground="Gray" Text="Chọn Ảnh Bìa"/>
                                             </StackPanel>
                                         </Button>
-                                        <Image Margin="10 15" Height="150" Source="ResoucesXAML\no_img.jpg" />
+                                        <!--hình ảnh-->
+                                        <Image Margin="10 15" Height="150" Source="{Binding ImageSource,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
                                     </StackPanel>
-                                    <StackPanel Margin="10 30" Orientation="Horizontal">
-                                        <Button Width="100" Margin="5" Content="Thêm"/>
-                                        <Button Width="100" Margin="5" Content="Sửa"/>
-                                        <Button Width="100" Margin="5" Content="Xoá"/>
+                                    <StackPanel Orientation="Horizontal"  Margin="10 30">
+                                        <Button Margin="5" Width="100" Content="Thêm" Command="{Binding AddCommmand}"/>
+                                        <Button Margin="5" Width="100" Content="Sửa" Command="{Binding EditCommmand}"/>
+                                        <Button Margin="5" Width="100" Content="Xoá" Command="{Binding DeleteCommand}"/>
                                     </StackPanel>
 
                                 </StackPanel>
@@ -82,17 +76,15 @@
                             </StackPanel>
                         </Grid>
                         <ScrollViewer Grid.Row="1">
-                            <ListView Margin="10">
+                            <ListView Margin="10" ItemsSource="{Binding ListDocGia}" SelectedItem="{Binding SelectedItem}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="STT"></GridViewColumn>
-                                        <GridViewColumn Header="Mã Số Thẻ"></GridViewColumn>
-                                        <GridViewColumn Header="Họ Tên"></GridViewColumn>
-                                        <GridViewColumn Header="Ngày Sinh"></GridViewColumn>
-                                        <GridViewColumn Header="Giới Tính"></GridViewColumn>
-                                        <GridViewColumn Header="CMTND"></GridViewColumn>
-                                        <GridViewColumn Header="Số Điện Thoại"></GridViewColumn>
-                                        <GridViewColumn Header="Email"></GridViewColumn>
+                                        <GridViewColumn Header="Mã Số Thẻ" DisplayMemberBinding="{Binding Id}"/>
+                                        <GridViewColumn Header="Họ Tên" DisplayMemberBinding="{Binding TenDocGia}"/>
+                                        <GridViewColumn Header="Ngày Sinh" DisplayMemberBinding="{Binding NgaySinh,StringFormat='dd/MM/yyyy'}"/>
+                                        <GridViewColumn Header="CMTND" DisplayMemberBinding="{Binding CMTND}"/>
+                                        <GridViewColumn Header="Số Điện Thoại" DisplayMemberBinding="{Binding SoDienThoai}"/>
+                                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>

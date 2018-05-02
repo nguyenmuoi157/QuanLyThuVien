@@ -23,7 +23,7 @@ namespace QuanLyThuVien
         public PageTaiLieu()
         {
             InitializeComponent();
-            MainContent.Content = new PageQuanLyTaiLieu();
+            //MainContent.Content = new PageQuanLyTaiLieu();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -31,23 +31,29 @@ namespace QuanLyThuVien
             TransitionSlide.OnApplyTemplate();
             int index = int.Parse(((Button)e.Source).Uid);
             GridCusor.Margin = new Thickness(10+(index*150),0,0,0);
-            switch (index)
-            {
-                case 0:
-                    MainContent.Content = new PageQuanLyTaiLieu();
-                    break;
-                case 1:
-                    MainContent.Content = new PageNhaXuatBan();
-                    break;
-                case 2:
-                    MainContent.Content = new PageTacGia();
-                    break;
-                case 3:
-                    MainContent.Content = new PageNgonNgu();
-                    break;
-                default:
-                    break;
-            }
+            //switch (index)
+            //{
+            //    case 0:
+            //        MainContent.Content = new PageQuanLyTaiLieu();
+            //        break;
+            //    case 1:
+            //        MainContent.Content = new PageNhaXuatBan();
+            //        break;
+            //    case 2:
+            //        MainContent.Content = new PageTacGia();
+            //        break;
+            //    case 3:
+            //        MainContent.Content = new PageNgonNgu();
+            //        break;
+            //    case 4:
+            //        MainContent.Content = new PageTheLoai();
+            //        break;
+            //    case 5:
+            //        MainContent.Content = new PageViTri();
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
     }
 }

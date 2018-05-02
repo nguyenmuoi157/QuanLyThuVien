@@ -10,7 +10,7 @@
         xmlns:uc ="clr-namespace:QuanLyThuVien.UserControlXAML"
         DataContext="{StaticResource MainViewModel}"
         Name="MainWindow"
-        Title="Quản Lý Thư Viện " Height="768" Width="1136" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="Quản Lý Thư Viện " Height="768" Width="1280" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding WindowsLoadCommand}" CommandParameter="{Binding  ElementName=MainWindow}"/>
@@ -57,14 +57,15 @@
                                                         Kind="Magnify"
                                                         Opacity=".56" />
                                                 </Button>
-                                                <TextBox
+                                                <TextBox Name="txtTimKiem"
                                                     Grid.Column="1"
                                                     Margin="8 0 0 0"
                                                     materialDesign:HintAssist.Hint="Từ Khoá Tìm Kiếm"
                                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                                     BorderThickness="0"
                                                     MinWidth="200"
-                                                    VerticalAlignment="Center" />
+                                                    VerticalAlignment="Center"
+                                                         Text="{Binding TuKhoaTimKiem}"/>
                                                 <Button
                                                     Style="{DynamicResource MaterialDesignToolButton}"
                                                     Grid.Column="2">
@@ -75,7 +76,12 @@
                                 <Button
                                     Style="{DynamicResource MaterialDesignToolForegroundButton}" Foreground="White">
                                     <materialDesign:PackIcon Kind="Send" />
-                                </Button>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding TimKiemCommand}" CommandParameter="{Binding  ElementName=MainContent}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Button>
                             </StackPanel>
                         
                         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
@@ -119,22 +125,22 @@
 
                             <Ellipse Width="70" Height="70" VerticalAlignment="Top" Margin="0 20">
                                 <Ellipse.Fill>
-                                    <ImageBrush ImageSource="{Binding}"/>
+                                <ImageBrush ImageSource="{Binding ImageSource,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Stretch="UniformToFill"/>
                                 </Ellipse.Fill>
 
                             </Ellipse>
-                            <TextBlock Text="Tên Người Dùng" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="AntiqueWhite" Margin="0 20  "></TextBlock>
+                        <TextBlock Text="{Binding TenNguoiDung,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="AntiqueWhite" Margin="0 20  "></TextBlock>
                         </Grid>
  
                         <StackPanel Grid.Row="1">
 
                             <ListView  x:Name="ListViewMenu" Margin="0 0" Foreground="#FF85878D" FontFamily="Century Gothic" FontSize="14" SelectionChanged="ListViewMenu_SelectionChanged">
-                                <ListViewItem  Height="60">
+                                <!--<ListViewItem  Height="60">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon  Kind="Home" VerticalAlignment="Center"/>
                                         <TextBlock Text="Trang Chủ" VerticalAlignment="Center"/>
                                     </StackPanel>
-                                </ListViewItem>
+                                </ListViewItem>-->
                                 <ListViewItem Height="60">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Notebook" VerticalAlignment="Center"/>
@@ -165,8 +171,13 @@
                                         <TextBlock Text="Người dùng" VerticalAlignment="Center" />
                                     </StackPanel>
                                 </ListViewItem>
-
-                                <i:Interaction.Triggers>
+                            <ListViewItem Height="60">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon  Kind="VectorUnion" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Phân Quyền" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListViewItem>
+                            <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="SelectionChanged">
                                         <i:InvokeCommandAction Command="{Binding SelectItemCommand}" CommandParameter="{Binding ElementName=ListViewMenu}"/>
                                     </i:EventTrigger>

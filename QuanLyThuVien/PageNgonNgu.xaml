@@ -9,7 +9,8 @@
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       DataContext="{StaticResource NgonNguViewModel}"
       Name="_PageNgonNgu"
-      Title="ngôn ngữ">
+      Title="ngôn ngữ"
+      Uid="4">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding PLoadCommand}" CommandParameter="{Binding  ElementName=_PageNgonNgu}"/>
@@ -28,7 +29,7 @@
                             <TextBlock Margin="10 0" HorizontalAlignment="Left" VerticalAlignment="Center" Text="" FontWeight="Bold" Foreground="#535351" FontSize="14" FontFamily="Open Sans, sans-serif"></TextBlock>
                         </Grid>
                         <Separator Background="WhiteSmoke"/>
-                        <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Tên Ngôn Ngữ(*)" Text="{Binding TxtNgonNgu,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Tên Ngôn Ngữ(*)" Text="{Binding TxtNgonNgu,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
                         <Grid Height="60">

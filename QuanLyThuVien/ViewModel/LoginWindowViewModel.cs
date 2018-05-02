@@ -16,7 +16,8 @@ namespace QuanLyThuVien.ViewModel
         public bool IsLogin{get;set;}
         private String _UserName = "";
         private String _PassWord = "";
-        
+        public int IdNguoiDung { get; set; }
+
         public string UserName { get => _UserName; set { _UserName = value; OnPropertyChanged(); } }
         public string PassWord { get => _PassWord; set { _PassWord = value; OnPropertyChanged(); } }
 
@@ -43,11 +44,12 @@ namespace QuanLyThuVien.ViewModel
             if (p == null)
                 return;
              string pass = MD5Hash(PassWord);
-            var acc = Dataprovider.Ins.DB.NguoiDungs.Where(x=>(x.Email== UserName||x.TenNguoiDung== UserName) && x.MatKhau== pass).Count();
+            var acc = Dataprovider.Ins.DB.NguoiDungs.Where(x=>x.TenNguoiDung==UserName&&x.MatKhau==pass).SingleOrDefault();
 
-            if (acc>0)
+            if (acc!=null)
                 {
                     IsLogin = true;
+                    IdNguoiDung = acc.Id;
                     p.Close();
                 }
                 else

@@ -12,5 +12,11 @@
     <viewmodel:TacGiaViewModel x:Key="TacGiaViewModel" ></viewmodel:TacGiaViewModel>
     <viewmodel:NhaXuatBanViewModel x:Key="NhaXuatBanViewModel" ></viewmodel:NhaXuatBanViewModel>
     <viewmodel:QuyenHeThongViewModel x:Key="QuyenHeThongViewModel" ></viewmodel:QuyenHeThongViewModel>
-
+    <viewmodel:TaiLieuViewModel x:Key="TaiLieuViewModel" ></viewmodel:TaiLieuViewModel>
+    <viewmodel:TheLoaiViewModel x:Key="TheLoaiViewModel" ></viewmodel:TheLoaiViewModel>
+    <viewmodel:ViTriViewModel x:Key="ViTriViewModel" ></viewmodel:ViTriViewModel>
+    <viewmodel:MuonViewModel x:Key="MuonViewModel" ></viewmodel:MuonViewModel>
+    <viewmodel:TraViewModel x:Key="TraViewModel" ></viewmodel:TraViewModel>
+    <viewmodel:NavTaiLieuDatacontex x:Key="NavTaiLieu" ></viewmodel:NavTaiLieuDatacontex>
+    <viewmodel:PhanQuyenViewModel x:Key="PhanQuyenViewModel" ></viewmodel:PhanQuyenViewModel>
 </ResourceDictionary>

@@ -6,8 +6,16 @@
       xmlns:local="clr-namespace:QuanLyThuVien"
       mc:Ignorable="d"
       Title="PageQuanLyTaiLieu"
-      
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+      DataContext="{StaticResource TaiLieuViewModel}"
+      Name="PQuanLyTaiLieu"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Uid="1">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding PLoadCommand}" CommandParameter="{Binding  ElementName=PQuanLyTaiLieu}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
         <materialDesign:Card>
             <Grid>
@@ -26,17 +34,13 @@
                         </Grid>
                         <Separator Background="WhiteSmoke"/>
                         <StackPanel Margin="10 0">
-                            <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Tên Sách(*)"/>
-                            <ComboBox Margin="10 15" materialDesign:HintAssist.Hint="Tác Giả" IsEditable="True">
-                                            <ComboBoxItem>khỉ </ComboBoxItem>
-                                            <ComboBoxItem>khỉ</ComboBoxItem>
-                                            <ComboBoxItem>khỉ</ComboBoxItem>
-                                            <ComboBoxItem>khỉ</ComboBoxItem>
-                                        </ComboBox>
-                            <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Số Trang"/>
-                            <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Nhan Đề"/>
-                            <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Số lượng trong kho"/>
-                            <TextBox Margin="10 15" materialDesign:HintAssist.Hint="Giá bìa"/>
+                            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Tựa Đề" Text="{Binding NhanDe,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <ComboBox  ItemsSource="{Binding ListTacGia}" SelectedItem="{Binding SelectedTacGia}" DisplayMemberPath="TenTacGia" Margin="10 20" materialDesign:HintAssist.Hint="Tác Giả" IsEditable="True"/>
+                            <ComboBox ItemsSource="{Binding ListNhaXuatBan}" SelectedItem="{Binding SelectedNhaXuatBan}" DisplayMemberPath="TenNhaXuatBan"  Margin="10 15" materialDesign:HintAssist.Hint="Nhà Xuất Bản" IsEditable="True"/>
+                            <ComboBox ItemsSource="{Binding ListNgonNgu}" SelectedItem="{Binding SelectedNgonNgu}" DisplayMemberPath="TenNgonNgu"  Margin="10 15" materialDesign:HintAssist.Hint="Ngôn Ngữ" IsEditable="True"/>
+                            <ComboBox ItemsSource="{Binding ListTheLoai}" SelectedItem="{Binding SelectedTheLoai}" DisplayMemberPath="TenTheLoai"  Margin="10 15" materialDesign:HintAssist.Hint="Thể Loại" IsEditable="True"/>
+                            <ComboBox ItemsSource="{Binding ListViTri}" SelectedItem="{Binding SelectedViTri}" DisplayMemberPath="SoGiaSach"  Margin="10 15" materialDesign:HintAssist.Hint="Số Giá Sách" IsEditable="True"/>
+
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Grid.Column="1">
@@ -45,39 +49,45 @@
                         </Grid>
                         <Separator Background="WhiteSmoke"/>
                         <StackPanel Margin="10 0">
+                            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Số lượng trong kho" Text="{Binding SoLuong,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Số Trang" Text="{Binding SoTrang,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10 15" materialDesign:HintAssist.Hint="Giá bìa" Text="{Binding GiaBia,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+
                             <StackPanel Orientation="Horizontal">
-                                <Button Margin="10 15" Background="{x:Null}" BorderBrush="Gray" Height="45">
+                                <Button Margin="10 15" Background="{x:Null}" BorderBrush="Gray" Height="45" Command="{Binding LoadImageCommand}">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="UploadNetwork" Foreground="Gray"/>
-                                        <TextBlock Foreground="Gray" Text="Chọn hình ảnh"/>
+                                        <TextBlock Foreground="Gray" Text="Chọn Ảnh Bìa"/>
                                     </StackPanel>
                                 </Button>
-                                <Image Margin="10 15" Height="150" Source="ResoucesXAML\no_img.jpg" />
+                                <!--hình ảnh-->
+                                <Image Margin="10 15" Height="150" Source="{Binding ImageSource,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
                             </StackPanel>
-                            <StackPanel Margin="10 30" Orientation="Horizontal">
-                                <Button Width="100" Margin="5" Content="Thêm"/>
-                                <Button Width="100" Margin="5" Content="Sửa"/>
-                                <Button Width="100" Margin="5" Content="Xoá"/>
+                            <StackPanel Orientation="Horizontal"  Margin="10 30">
+                                <Button Margin="5" Width="100" Content="Thêm" Command="{Binding AddCommmand}"/>
+                                <Button Margin="5" Width="100" Content="Sửa" Command="{Binding EditCommmand}"/>
+                                <Button Margin="5" Width="100" Content="Xoá" Command="{Binding DeleteCommmand}"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </Grid>
                 <ScrollViewer Grid.Row="1">
-                                <ListView Margin="10">
-                                    <ListView.View>
-                                        <GridView>
-                                            <GridViewColumn Header="STT"/>
-                                            <GridViewColumn Header="Mã sách"/>
-                                            <GridViewColumn Header="Tên sách"/>
-                                            <GridViewColumn Header="Nhan đề"/>
-                                            <GridViewColumn Header="Tác giả"/>
-                                            <GridViewColumn Header="Số lượng"/>
-                                            <GridViewColumn Header="Số trang"/>
-                                            <GridViewColumn Header="Giá bìa"/>
-                                        </GridView>
-                                    </ListView.View>
-                                </ListView>
-                            </ScrollViewer>
+                    <ListView Margin="10" ItemsSource="{Binding ListTaiLieu}" SelectedItem="{Binding SelectedItem}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã Sách" DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="Tựa Đề" DisplayMemberBinding="{Binding TuaDe}"/>
+                                <GridViewColumn Header="Tác Giả" DisplayMemberBinding="{Binding TacGia.TenTacGia}"/>
+                                <GridViewColumn Header="Thể Loại" DisplayMemberBinding="{Binding TheLoai.TenTheLoai}"/>
+                                <GridViewColumn Header="Ngôn Ngữ" DisplayMemberBinding="{Binding NgonNgu.TenNgonNgu}"/>
+                                <GridViewColumn Header="Số Giá Sách" DisplayMemberBinding="{Binding ViTri.SoGiaSach}"/>
+                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SoLuong}"/>
+                                <GridViewColumn Header="Số trang" DisplayMemberBinding="{Binding SoTrang}"/>
+                                <GridViewColumn Header="Giá Bìa" DisplayMemberBinding="{Binding GiaBia}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
             </Grid>
         </materialDesign:Card>
     </materialDesign:TransitioningContent>

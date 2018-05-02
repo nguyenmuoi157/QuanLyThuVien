@@ -75,7 +75,7 @@
                                 Width="auto"
                                 Command="{Binding BtnLoginClickCommand}" 
                                 CommandParameter="{Binding ElementName = WindowsLogin}"/>
-                        <TextBlock Margin="0 10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Text="Quên Mật Khẩu?"></TextBlock>
+                        <TextBlock Margin="0 10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
                     </Grid>
                 </Grid>
             </materialDesign:Card>

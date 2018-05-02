@@ -5,11 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuanLyThuVien"
       mc:Ignorable="d" 
-      Title="PageBanDoc"
-      
+      Title="navTaiLieu"
+      Name="NavTaiLieu"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      DataContext="{StaticResource NavTaiLieu}"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       >
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,19 +19,23 @@
         <StackPanel  Grid.Row="0">
             <StackPanel Background="White">
                 <StackPanel Margin="10 0" Orientation="Horizontal" VerticalAlignment="Top">
-                    <Button Name="btnTaiLieu" Uid="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="TÀI LIỆU" Width="150" Height="50" Click="Button_Click"/>
-                    <Button Name="btnNhaXuatBan" Uid="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="NHÀ XUẤT BẢN" Width="150" Height="50" Click="Button_Click"/>
-                    <Button Name="btnTacGia" Uid="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="TÁC GIẢ" Width="150" Height="50" Click="Button_Click"/>
-                    <Button Name="btnNgonNgu" Uid="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="NGÔN NGỮ" Width="150" Height="50" Click="Button_Click"/>
-                    <Button Uid="4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="VỊ TRÍ" Width="150" Height="50" Click="Button_Click"/>
+                    <Button Command="{Binding BtnTaiLieu}" Name="btnTaiLieu" Uid="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="TÀI LIỆU" Width="150" Height="50" Click="Button_Click"/>
+                    <Button Command="{Binding BtnNhaXuatBan}" Name="btnNhaXuatBan" Uid="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="NHÀ XUẤT BẢN" Width="150" Height="50" Click="Button_Click"/>
+                    <Button Command="{Binding BtnTacGia}" Name="btnTacGia" Uid="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="TÁC GIẢ" Width="150" Height="50" Click="Button_Click"/>
+                    <Button Command="{Binding BtnNgonNgu}" Name="btnNgonNgu" Uid="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="NGÔN NGỮ" Width="150" Height="50" Click="Button_Click"/>
+                    <Button Command="{Binding BtnTheLoai}" Uid="4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="THỂ LOẠI" Width="150" Height="50" Click="Button_Click"/>
+                    <Button Command="{Binding BtnViTri}" Uid="5" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD4086DA" Content="VỊ TRÍ" Width="150" Height="50" Click="Button_Click"/>
                 </StackPanel>
                 <materialDesign:TransitioningContent x:Name="TransitionSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
                     <Grid Name="GridCusor" Height="5" Width="150" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0"/>
                 </materialDesign:TransitioningContent>
             </StackPanel>
-
             <Frame Name="MainContent">
-                
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadContent}" CommandParameter="{Binding  ElementName=MainContent}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </Frame>
             
         </StackPanel>
